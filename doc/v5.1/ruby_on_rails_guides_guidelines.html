@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>루비 온 레일스 가이드를 위한 가이드라인 — Ruby on Rails Guides</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+<link rel="stylesheet" type="text/css" href="stylesheets/syntaxhighlighter/shCore.css" />
+<link rel="stylesheet" type="text/css" href="stylesheets/syntaxhighlighter/shThemeRailsGuides.css" />
+
+<link rel="stylesheet" type="text/css" href="stylesheets/fixes.css" />
+
+<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body class="guide">
+  <div>
+    <img src="images/edge_badge.png" alt="edge-badge" id="edge-badge" />
+  </div>
+  <div id="topNav">
+    <div class="wrapper">
+      <strong class="more-info-label">더보기 <a href="http://rubyonrails.org/">rubyonrails.org:</a> </strong>
+      <span class="red-button more-info-button">
+        루비 온 레일스
+      </span>
+      <ul class="more-info-links s-hidden">
+        <li class="more-info"><a href="http://weblog.rubyonrails.org/">블로그</a></li>
+        <li class="more-info"><a href="http://guides.rubyonrails.org/">가이드(영어)</a></li>
+        <li class="more-info"><a href="http://api.rubyonrails.org/">API</a></li>
+        <li class="more-info"><a href="http://stackoverflow.com/questions/tagged/ruby-on-rails">물어보기</a></li>
+        <li class="more-info"><a href="https://github.com/rails/rails">레일스 저장소</a></li>
+        <li class="more-info"><a href="https://github.com/rorlakr/rails-guides">번역 저장소</a></li>
+        <li class="more-info"><a href="http://rorlab.org">RORLAB</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="header">
+    <div class="wrapper clearfix">
+      <h1><a href="index.html" title="홈페이지로 돌아가기">Guides.rubyonrails.org</a></h1>
+      <ul class="nav">
+        <li><a class="nav-item" href="index.html">홈</a></li>
+        <li class="guides-index guides-index-large">
+          <a href="index.html" id="guidesMenu" class="guides-index-item nav-item">가이드 목차</a>
+          <div id="guides" class="clearfix" style="display: none;">
+            <hr />
+              <dl class="L">
+                <dt>시작하기 전에</dt>
+                <dd><a href="getting_started.html">레일스 시작하기</a></dd>
+                <dt>모델</dt>
+                <dd><a href="active_record_basics.html">액티브 레코드 기본</a></dd>
+                <dd><a href="active_record_migrations.html">액티브 레코드 마이그레이션</a></dd>
+                <dd><a href="active_record_validations.html">액티브 레코드 밸리데이션</a></dd>
+                <dd><a href="active_record_callbacks.html">액티브 레코드 콜백</a></dd>
+                <dd><a href="association_basics.html">액티브 레코드 관계</a></dd>
+                <dd><a href="active_record_querying.html">액티브 레코드 검색 인터페이스</a></dd>
+                <dt>뷰</dt>
+                <dd><a href="layouts_and_rendering.html">레일스의 레이아웃과 렌더링</a></dd>
+                <dd><a href="form_helpers.html">액션 뷰 폼 헬퍼</a></dd>
+                <dt>콘트롤러</dt>
+                <dd><a href="action_controller_overview.html">액션 콘트롤러 개요</a></dd>
+                <dd><a href="routing.html">레일스 라우팅</a></dd>
+              </dl>
+              <dl class="R">
+                <dt>심화 내용</dt>
+                <dd><a href="active_support_core_extensions.html">액티브 서포트 코어 확장</a></dd>
+                <dd><a href="i18n.html">레일스 다국어 API</a></dd>
+                <dd><a href="action_mailer_basics.html">액션 메일러 기본</a></dd>
+                <dd><a href="active_job_basics.html">액티브 잡 기본</a></dd>
+                <dd><a href="testing.html">레일스 애플리케이션 테스트</a></dd>
+                <dd><a href="security.html">레일스 애플리케이션 보안</a></dd>
+                <dd><a href="debugging_rails_applications.html">레일스 애플리케이션 디버깅</a></dd>
+                <dd><a href="configuring.html">레일스 애플리케이션 설정</a></dd>
+                <dd><a href="command_line.html">레일스 콘솔 명령어</a></dd>
+                <dd><a href="asset_pipeline.html">애셋 파이프라인</a></dd>
+                <dd><a href="working_with_javascript_in_rails.html">레일스에서 자바스크립트 사용하는 방법</a></dd>
+                <dd><a href="autoloading_and_reloading_constants.html">상수를 자동으로 가져오고 다시 불러오는 기능</a></dd>
+                <dd><a href="caching_with_rails.html">레일스로 캐싱하기: 개요</a></dd>
+                <dd><a href="api_app.html">API만 사용하는 레일스 애플리케이션</a></dd>
+                <dd><a href="action_cable_overview.html">액션 케이블 소개</a></dd>
+                <dt>레일스 확장하기</dt>
+                <dd><a href="rails_on_rack.html">레일스 온 랙</a></dd>
+                <dd><a href="generators.html">레일스 제너레이터 만드는 방법</a></dd>
+                <dt>루비 온 레일스에 기여하는 방법</dt>
+                <dd><a href="contributing_to_ruby_on_rails.html">루비 온 레일스에 기여하는 방법</a></dd>
+                <dd><a href="api_documentation_guidelines.html">API 문서 작성 지침</a></dd>
+                <dd><a href="ruby_on_rails_guides_guidelines.html">루비 온 레일스 가이드 지침</a></dd>
+                <dt>유지관리 정책</dt>
+                <dd><a href="maintenance_policy.html">유지관리 정책</a></dd>
+                <dt>릴리스 노트</dt>
+                <dd><a href="upgrading_ruby_on_rails.html">루비 온 레일스 업그레이드 가이드</a></dd>
+                <dd><a href="5_1_release_notes.html">루비 온 레일스 5.1 릴리스 노트</a></dd>
+                <dd><a href="5_0_release_notes.html">루비 온 레일스 5.0 릴리스 노트</a></dd>
+                <dd><a href="4_2_release_notes.html">루비 온 레일스 4.2 릴리스 노트</a></dd>
+                <dd><a href="4_1_release_notes.html">루비 온 레일스 4.1 릴리스 노트</a></dd>
+                <dd><a href="4_0_release_notes.html">루비 온 레일스 4.0 릴리스 노트</a></dd>
+                <dd><a href="3_2_release_notes.html">루비 온 레일스 3.2 릴리스 노트</a></dd>
+                <dd><a href="3_1_release_notes.html">Ruby on Rails 3.1 Release Notes</a></dd>
+                <dd><a href="3_0_release_notes.html">루비 온 레일스 3.0 릴리스 노트</a></dd>
+                <dd><a href="2_3_release_notes.html">루비 온 레일스 2.3 릴리스 노트</a></dd>
+                <dd><a href="2_2_release_notes.html">루비 온 레일스 2.2 릴리스 노트</a></dd>
+              </dl>
+          </div>
+        </li>
+        <li><a class="nav-item" href="contributing_to_ruby_on_rails.html">기여하기</a></li>
+        <li><a class="nav-item" href="credits.html">도와주신 분들</a></li>
+        <li class="guides-index guides-index-small">
+          <select class="guides-index-item nav-item">
+            <option value="index.html">가이드 목차</option>
+              <optgroup label="시작하기 전에">
+                  <option value="getting_started.html">레일스 시작하기</option>
+              </optgroup>
+              <optgroup label="모델">
+                  <option value="active_record_basics.html">액티브 레코드 기본</option>
+                  <option value="active_record_migrations.html">액티브 레코드 마이그레이션</option>
+                  <option value="active_record_validations.html">액티브 레코드 밸리데이션</option>
+                  <option value="active_record_callbacks.html">액티브 레코드 콜백</option>
+                  <option value="association_basics.html">액티브 레코드 관계</option>
+                  <option value="active_record_querying.html">액티브 레코드 검색 인터페이스</option>
+              </optgroup>
+              <optgroup label="뷰">
+                  <option value="layouts_and_rendering.html">레일스의 레이아웃과 렌더링</option>
+                  <option value="form_helpers.html">액션 뷰 폼 헬퍼</option>
+              </optgroup>
+              <optgroup label="콘트롤러">
+                  <option value="action_controller_overview.html">액션 콘트롤러 개요</option>
+                  <option value="routing.html">레일스 라우팅</option>
+              </optgroup>
+              <optgroup label="심화 내용">
+                  <option value="active_support_core_extensions.html">액티브 서포트 코어 확장</option>
+                  <option value="i18n.html">레일스 다국어 API</option>
+                  <option value="action_mailer_basics.html">액션 메일러 기본</option>
+                  <option value="active_job_basics.html">액티브 잡 기본</option>
+                  <option value="testing.html">레일스 애플리케이션 테스트</option>
+                  <option value="security.html">레일스 애플리케이션 보안</option>
+                  <option value="debugging_rails_applications.html">레일스 애플리케이션 디버깅</option>
+                  <option value="configuring.html">레일스 애플리케이션 설정</option>
+                  <option value="command_line.html">레일스 콘솔 명령어</option>
+                  <option value="asset_pipeline.html">애셋 파이프라인</option>
+                  <option value="working_with_javascript_in_rails.html">레일스에서 자바스크립트 사용하는 방법</option>
+                  <option value="autoloading_and_reloading_constants.html">상수를 자동으로 가져오고 다시 불러오는 기능</option>
+                  <option value="caching_with_rails.html">레일스로 캐싱하기: 개요</option>
+                  <option value="api_app.html">API만 사용하는 레일스 애플리케이션</option>
+                  <option value="action_cable_overview.html">액션 케이블 소개</option>
+              </optgroup>
+              <optgroup label="레일스 확장하기">
+                  <option value="rails_on_rack.html">레일스 온 랙</option>
+                  <option value="generators.html">레일스 제너레이터 만드는 방법</option>
+              </optgroup>
+              <optgroup label="루비 온 레일스에 기여하는 방법">
+                  <option value="contributing_to_ruby_on_rails.html">루비 온 레일스에 기여하는 방법</option>
+                  <option value="api_documentation_guidelines.html">API 문서 작성 지침</option>
+                  <option value="ruby_on_rails_guides_guidelines.html">루비 온 레일스 가이드 지침</option>
+              </optgroup>
+              <optgroup label="유지관리 정책">
+                  <option value="maintenance_policy.html">유지관리 정책</option>
+              </optgroup>
+              <optgroup label="릴리스 노트">
+                  <option value="upgrading_ruby_on_rails.html">루비 온 레일스 업그레이드 가이드</option>
+                  <option value="5_1_release_notes.html">루비 온 레일스 5.1 릴리스 노트</option>
+                  <option value="5_0_release_notes.html">루비 온 레일스 5.0 릴리스 노트</option>
+                  <option value="4_2_release_notes.html">루비 온 레일스 4.2 릴리스 노트</option>
+                  <option value="4_1_release_notes.html">루비 온 레일스 4.1 릴리스 노트</option>
+                  <option value="4_0_release_notes.html">루비 온 레일스 4.0 릴리스 노트</option>
+                  <option value="3_2_release_notes.html">루비 온 레일스 3.2 릴리스 노트</option>
+                  <option value="3_1_release_notes.html">Ruby on Rails 3.1 Release Notes</option>
+                  <option value="3_0_release_notes.html">루비 온 레일스 3.0 릴리스 노트</option>
+                  <option value="2_3_release_notes.html">루비 온 레일스 2.3 릴리스 노트</option>
+                  <option value="2_2_release_notes.html">루비 온 레일스 2.2 릴리스 노트</option>
+              </optgroup>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr class="hide" />
+
+  <div id="feature">
+    <div class="wrapper">
+      <h2>루비 온 레일스 가이드를 위한 가이드라인</h2><p>이 가이드는 루비 온 레일스 가이드를 작성하기 위한 가이드라인 입니다. 이 가이드 자체가 이 가이드에 따라서 작성되었으며, 바람직한 가이드라인의 예가 됨과 동시에 우아한 루프를 형성하고 있습니다.</p><p>이 가이드의 내용:</p>
+<ul>
+<li>레일스 문서에서 사용되는 규칙</li>
+<li>가이드를 로컬에서 생성하기</li>
+</ul>
+
+
+                <div id="subCol">
+            <h3 class="chapter"><img src="images/chapters_icon.gif" alt="" />Chapters</h3>
+            <ol class="chapters">
+<li><a href="#%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4">마크다운</a></li>
+<li><a href="#%ED%94%84%EB%A1%A4%EB%A1%9C%EA%B7%B8">프롤로그</a></li>
+<li><a href="#%EC%A0%9C%EB%AA%A9">제목</a></li>
+<li><a href="#api%EC%97%90-%EB%A7%81%ED%81%AC">API에 링크</a></li>
+<li><a href="#api-%EB%AC%B8%EC%84%9C-%EA%B0%80%EC%9D%B4%EB%93%9C%EB%9D%BC%EC%9D%B8">API 문서 가이드라인</a></li>
+<li>
+<a href="#html-%EA%B0%80%EC%9D%B4%EB%93%9C">HTML 가이드</a>
+
+<ul>
+<li><a href="#html-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%83%9D%EC%84%B1">생성</a></li>
+<li><a href="#%EA%B2%80%EC%A6%9D">검증</a></li>
+</ul>
+</li>
+<li>
+<a href="#%ED%82%A8%EB%93%A4-%EA%B0%80%EC%9D%B4%EB%93%9C">킨들 가이드</a>
+
+<ul>
+<li><a href="#%ED%82%A8%EB%93%A4-%EA%B0%80%EC%9D%B4%EB%93%9C-%EC%83%9D%EC%84%B1">생성</a></li>
+</ul>
+</li>
+</ol>
+
+          </div>
+
+    </div>
+  </div>
+
+  <div id="container">
+    <div class="wrapper">
+      <div id="mainCol">
+        <h3 id="마크다운">1 마크다운</h3><p>가이드는 <a href="https://help.github.com/articles/github-flavored-markdown">GitHub Flavored Markdown</a>으로 작성되어 있습니다. <a href="https://help.github.com/articles/github-flavored-markdown">GitHub Flavored Markdown</a>을 참고할 <a href="http://daringfireball.net/projects/markdown/syntax">마크다운 문서</a>, <a href="http://daringfireball.net/projects/markdown/basics">치트시트</a>가 있습니다.</p><h3 id="프롤로그">2 프롤로그</h3><p>가이드의 시작 부분에는 독자들의 동기부여를 위한 내용을 기술해주세요. 가이드의 파란색 부분이 이에 해당합니다. 프롤로그에서는 그 가이드의 개요와 가이드에서 배울 수 있는 것들에 대해서 설명해주세요. 예제로서 <a href="routing.html">라우팅 가이드</a>을 참고해주세요.</p><h3 id="제목">3 제목</h3><p>가이드의 제목에는 <code>h1</code>, 가이드의 절에는 <code>h2</code>, 작은 절에는 <code>h3</code>를 각각 사용해주세요. 그리고 실제로 생성된 HTML에서는 <code>&lt;h2&gt;</code>부터 시작됩니다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+가이드의 제목
+===========
+
+절
+-------
+
+### 작은 절
+
+</pre>
+</div>
+<p>제목을 작성할 때 관사, 전치사, 접속사, be동사 이외의 단어는 모두 대문자로 시작해주세요.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+#### Middleware Stack is an Array
+#### When are Objects Saved?
+
+</pre>
+</div>
+<p>일반 텍스트와 같은 인라인 포맷을 사용해주세요.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+##### The `:content_type` Option
+
+</pre>
+</div>
+<h3 id="api에-링크">4 API에 링크</h3><p>가이드 제너레이터로 API(<code>api.rubyonrails.org</code>) 링크는 다음과 같은 방법으로 처리됩니다.</p><p>릴리스 태그를 포함하는 링크들은 그대로 유지됩니다. 예를 들면</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+http://api.rubyonrails.org/v5.0.1/classes/ActiveRecord/Attributes/ClassMethods.html
+
+</pre>
+</div>
+<p>는 수정되지 않습니다.</p><p>생성된 문서에 상관없이 동일한 버전을 가리켜야 하기 때문에, 릴리스 태그가 있는 링크들을 사용해주세요.</p><p>링크가 릴리스 태그를 포함하지 않고 엣지 가이드를 생성하면, 도메인은 <code>edgeapi.rubyonrails.org</code>로 수정됩니다. 예를 들면</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+http://api.rubyonrails.org/classes/ActionDispatch/Response.html
+
+</pre>
+</div>
+<p>위 링크가 아래와 같이 됩니다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+http://edgeapi.rubyonrails.org/classes/ActionDispatch/Response.html
+
+</pre>
+</div>
+<p>릴리스 태그와 릴리스 가이드를 포함하고 있지 않는 링크가 생성되면 레일스 버젼이 추가됩니다. 예를 들어 v5.1.0 버젼 가이드를 생성하면</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+http://api.rubyonrails.org/classes/ActionDispatch/Response.html
+
+</pre>
+</div>
+<p>위 링크가 아래와 같이 됩니다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+http://api.rubyonrails.org/v5.1.0/classes/ActionDispatch/Response.html
+
+</pre>
+</div>
+<p><code>edgeapi.rubyonrails.org</code>를 직접 링크하지 마세요.</p><h3 id="api-문서-가이드라인">5 API 문서 가이드라인</h3><p>가이드와 API는 적절한 일관성이 있어야 합니다. <a href="api_documentation_guidelines.html">API 문서 가이드라인</a>의 다음 절을 참고해주세요. 이 절은 가이드에서도 적용됩니다.</p>
+<ul>
+<li><a href="api_documentation_guidelines.html#wording">Wording</a></li>
+<li><a href="api_documentation_guidelines.html#english">English</a></li>
+<li><a href="api_documentation_guidelines.html#example-code">Example Code</a></li>
+<li><a href="api_documentation_guidelines.html#file-names">Filenames</a></li>
+<li><a href="api_documentation_guidelines.html#fonts">Fonts</a></li>
+</ul>
+<h3 id="html-가이드">6 HTML 가이드</h3><p>가이드를 생성하기 전에 시스템에 최신 Bundler가 설치되었는지 확인하세요.
+ 현시점에서는 1.3.5 이상이 설치되어있어야 
+합니다.</p><p>최신 Bundler를 설치하려면 <code>gem install bundler</code>를 실행해주세요.</p><h4 id="html-가이드-생성">6.1 생성</h4><p>모든 가이드를 생성하려면 <code>cd</code> 명령으로 <code>guides</code> 디렉토리에 이동하여 <code>bundle install</code>를 실행한 뒤에 다음 중 하나를 실행합니다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+bundle exec rake guides:generate
+
+</pre>
+</div>
+<p>또는</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+bundle exec rake guides:generate:html
+
+</pre>
+</div>
+<p>HTML파일의 결과는 <code>./output</code>디렉토리에서 찾을 수 있습니다.</p><p><code>my_guide.md</code> 파일만을 생성하고 싶은 경우에는 환경변수 <code>ONLY</code>를 사용합니다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+touch my_guide.md
+bundle exec rake guides:generate ONLY=my_guide
+
+</pre>
+</div>
+<p>기본적으로는 변경이 없는 가이드의 생성은 생략되므로 <code>ONLY</code>를 사용할 기회는 많지 않을 것입니다.</p><p>모든 가이드를 강제적으로 생성하려면 <code>ALL=1</code>를 추가하면 됩니다</p><p>영어 이외의 언어에서 생성하고 싶은 경우에는 <code>source</code> 디렉토리 밑의 <code>source/es</code>와 같이 해당 언어의 디렉토리를 생성하고 <code>GUIDES_LANGUAGE</code> 환경변수를 설정해주세요.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+bundle exec rake guides:generate GUIDES_LANGUAGE=es
+
+</pre>
+</div>
+<p>생성 스크립트의 설정에 사용할 수 있는 환경변수를 모두 알고 싶은 경우에는 다음을 실행하면 됩니다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+rake
+
+</pre>
+</div>
+<h4 id="검증">6.2 검증</h4><p>생성된 HTML을 검증하기 위해 다음을 실행하세요.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+bundle exec rake guides:validate
+
+</pre>
+</div>
+<p>콘텐츠에서 생성된 아이디로 얻은 제목은 종종 중복이 발생합니다. 중복을 찾기 위해서는 가이드를 생성할 때에 <code>WARNINGS=1</code>를 지정해주세요. 경고와 함께 해결할 방법을 제안합니다.</p><h3 id="킨들-가이드">7 킨들 가이드</h3><h4 id="킨들-가이드-생성">7.1 생성</h4><p>킨들용 가이드를 생성하기 위해서 다음의 rake 태스크를 실행해주세요.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+bundle exec rake guides:generate:kindle
+
+</pre>
+</div>
+
+
+        <h3>피드백</h3>
+        <p>
+          여러분의 참여가 가이드 수준을 높입니다.
+        </p>
+        <p>
+          오자와 탈자 또는 확인할 수 있는 에러를 발견하면 기여해보기를 바랍니다.
+          기여하기 전에, <a href="http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#contributing-to-the-rails-documentation">문서 기여 방법</a> 부분을 읽기 바랍니다.
+        </p>
+        <p>
+          내용이 부족하거나 최신 글이 아닐 수도 있습니다.
+          마스터 브랜치에 빠진 문서를 넣어주기를 바랍니다. 먼저 
+          <a href="http://edgeguides.rubyonrails.org">엣지 가이드</a>에서 
+          해당 이슈를 이미 수정하여 마스터 브랜치에 반영하였는지 확인하기 바랍니다.
+          <a href="ruby_on_rails_guides_guidelines.html">루비 온 레일스 가이드 지침</a>에서 
+          스타일과 관례를 확인합니다.
+        </p>
+        <p>
+          고쳐야 할 것을 찾았으나 직접 수정할 수 없다면,
+          <a href="https://github.com/rails/rails/issues">이슈로 올리기</a> 바랍니다.
+        </p>
+        <p>그리고 마지막으로, 루비 온 레일스 문서에 대한 어떤 토론이라도 <a href="https://groups.google.com/forum/#!forum/rubyonrails-docs">rubyonrails-docs 메일링 리스트</a>에서 환영합니다.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hide" />
+  <div id="footer">
+    <div class="wrapper">
+      <p>이 저작물은 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ko">크리에이티브 커먼즈 동일조건변경허락 4.0 국제</a> 라이선스를 따릅니다.</p>
+<p>"Rails" 와 "Ruby on Rails" 와 레일스 로고의 저작권은 데이비드 하이네마이어 한슨에게 있습니다.</p>
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/responsive-tables.js"></script>
+  <script type="text/javascript" src="javascripts/guides.js"></script>
+  <script type="text/javascript" src="javascripts/syntaxhighlighter.js"></script>
+  <script type="text/javascript">
+    syntaxhighlighterConfig = {
+      autoLinks: false,
+    };
+    $(guidesIndex.bind);
+  </script>
+</body>
+</html>

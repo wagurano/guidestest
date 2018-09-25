@@ -1,0 +1,1290 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>액티브 레코드 마이그레이션 — Ruby on Rails Guides</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+<link rel="stylesheet" type="text/css" href="stylesheets/syntaxhighlighter/shCore.css" />
+<link rel="stylesheet" type="text/css" href="stylesheets/syntaxhighlighter/shThemeRailsGuides.css" />
+
+<link rel="stylesheet" type="text/css" href="stylesheets/fixes.css" />
+
+<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body class="guide">
+  <div>
+    <img src="images/edge_badge.png" alt="edge-badge" id="edge-badge" />
+  </div>
+  <div id="topNav">
+    <div class="wrapper">
+      <strong class="more-info-label">더보기 <a href="http://rubyonrails.org/">rubyonrails.org:</a> </strong>
+      <span class="red-button more-info-button">
+        루비 온 레일스
+      </span>
+      <ul class="more-info-links s-hidden">
+        <li class="more-info"><a href="http://weblog.rubyonrails.org/">블로그</a></li>
+        <li class="more-info"><a href="http://guides.rubyonrails.org/">가이드(영어)</a></li>
+        <li class="more-info"><a href="http://api.rubyonrails.org/">API</a></li>
+        <li class="more-info"><a href="https://stackoverflow.com/questions/tagged/ruby-on-rails">물어보기</a></li>
+        <li class="more-info"><a href="https://github.com/rails/rails">레일스 저장소</a></li>
+        <li class="more-info"><a href="https://github.com/rorlakr/rails-guides">번역 저장소</a></li>
+        <li class="more-info"><a href="http://rorlab.org">RORLAB</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="header">
+    <div class="wrapper clearfix">
+      <h1><a href="index.html" title="홈페이지로 돌아가기">Guides.rubyonrails.org</a></h1>
+      <ul class="nav">
+        <li><a class="nav-item" href="index.html">홈</a></li>
+        <li class="guides-index guides-index-large">
+          <a href="index.html" id="guidesMenu" class="guides-index-item nav-item">가이드 목차</a>
+          <div id="guides" class="clearfix" style="display: none;">
+            <hr />
+              <dl class="L">
+                <dt>시작하기 전에</dt>
+                <dd><a href="getting_started.html">레일스 시작하기</a></dd>
+                <dt>모델</dt>
+                <dd><a href="active_record_basics.html">액티브 레코드 기본</a></dd>
+                <dd><a href="active_record_migrations.html">액티브 레코드 마이그레이션</a></dd>
+                <dd><a href="active_record_validations.html">액티브 레코드 밸리데이션</a></dd>
+                <dd><a href="active_record_callbacks.html">액티브 레코드 콜백</a></dd>
+                <dd><a href="association_basics.html">액티브 레코드 관계</a></dd>
+                <dd><a href="active_record_querying.html">액티브 레코드 검색 인터페이스</a></dd>
+                <dt>뷰</dt>
+                <dd><a href="layouts_and_rendering.html">레일스의 레이아웃과 렌더링</a></dd>
+                <dd><a href="form_helpers.html">액션 뷰 폼 헬퍼</a></dd>
+                <dt>콘트롤러</dt>
+                <dd><a href="action_controller_overview.html">액션 콘트롤러 개요</a></dd>
+                <dd><a href="routing.html">레일스 라우팅</a></dd>
+              </dl>
+              <dl class="R">
+                <dt>심화 내용</dt>
+                <dd><a href="active_support_core_extensions.html">액티브 서포트 코어 확장</a></dd>
+                <dd><a href="i18n.html">레일스 다국어 API</a></dd>
+                <dd><a href="action_mailer_basics.html">액션 메일러 기본</a></dd>
+                <dd><a href="active_job_basics.html">액티브 잡 기본</a></dd>
+                <dd><a href="active_storage_overview.html">액티브 스토리지 개요</a></dd>
+                <dd><a href="testing.html">레일스 애플리케이션 테스트</a></dd>
+                <dd><a href="security.html">레일스 애플리케이션 보안</a></dd>
+                <dd><a href="debugging_rails_applications.html">레일스 애플리케이션 디버깅</a></dd>
+                <dd><a href="configuring.html">레일스 애플리케이션 설정</a></dd>
+                <dd><a href="command_line.html">레일스 콘솔 명령어</a></dd>
+                <dd><a href="asset_pipeline.html">애셋 파이프라인</a></dd>
+                <dd><a href="working_with_javascript_in_rails.html">레일스에서 자바스크립트 사용하는 방법</a></dd>
+                <dd><a href="autoloading_and_reloading_constants.html">상수를 자동으로 가져오고 다시 불러오는 기능</a></dd>
+                <dd><a href="caching_with_rails.html">레일스로 캐싱하기: 개요</a></dd>
+                <dd><a href="api_app.html">API만 사용하는 레일스 애플리케이션</a></dd>
+                <dd><a href="action_cable_overview.html">액션 케이블 소개</a></dd>
+                <dt>레일스 확장하기</dt>
+                <dd><a href="rails_on_rack.html">레일스 온 랙</a></dd>
+                <dd><a href="generators.html">레일스 제너레이터 만드는 방법</a></dd>
+                <dt>루비 온 레일스에 기여하는 방법</dt>
+                <dd><a href="contributing_to_ruby_on_rails.html">루비 온 레일스에 기여하는 방법</a></dd>
+                <dd><a href="api_documentation_guidelines.html">API 문서 작성 지침</a></dd>
+                <dd><a href="ruby_on_rails_guides_guidelines.html">루비 온 레일스 가이드 지침</a></dd>
+                <dt>유지관리 정책</dt>
+                <dd><a href="maintenance_policy.html">유지관리 정책</a></dd>
+                <dt>릴리스 노트</dt>
+                <dd><a href="upgrading_ruby_on_rails.html">루비 온 레일스 업그레이드 가이드</a></dd>
+                <dd><a href="5_2_release_notes.html">루비 온 레일스 5.2 릴리스 노트</a></dd>
+                <dd><a href="5_1_release_notes.html">루비 온 레일스 5.1 릴리스 노트</a></dd>
+                <dd><a href="5_0_release_notes.html">루비 온 레일스 5.0 릴리스 노트</a></dd>
+                <dd><a href="4_2_release_notes.html">루비 온 레일스 4.2 릴리스 노트</a></dd>
+                <dd><a href="4_1_release_notes.html">루비 온 레일스 4.1 릴리스 노트</a></dd>
+                <dd><a href="4_0_release_notes.html">루비 온 레일스 4.0 릴리스 노트</a></dd>
+                <dd><a href="3_2_release_notes.html">루비 온 레일스 3.2 릴리스 노트</a></dd>
+                <dd><a href="3_1_release_notes.html">Ruby on Rails 3.1 Release Notes</a></dd>
+                <dd><a href="3_0_release_notes.html">루비 온 레일스 3.0 릴리스 노트</a></dd>
+                <dd><a href="2_3_release_notes.html">루비 온 레일스 2.3 릴리스 노트</a></dd>
+                <dd><a href="2_2_release_notes.html">루비 온 레일스 2.2 릴리스 노트</a></dd>
+                <dt>시작하기 전에</dt>
+                <dd><a href="getting_started.html">레일스 시작하기</a></dd>
+                <dt>모델</dt>
+                <dd><a href="active_record_basics.html">액티브 레코드 기본</a></dd>
+                <dd><a href="active_record_migrations.html">액티브 레코드 마이그레이션</a></dd>
+                <dd><a href="active_record_validations.html">액티브 레코드 밸리데이션</a></dd>
+                <dd><a href="active_record_callbacks.html">Active Record Callbacks</a></dd>
+                <dd><a href="association_basics.html">Active Record Associations</a></dd>
+                <dd><a href="active_record_querying.html">Active Record Query Interface</a></dd>
+                <dt>Views</dt>
+                <dd><a href="layouts_and_rendering.html">Layouts and Rendering in Rails</a></dd>
+                <dd><a href="form_helpers.html">Action View Form Helpers</a></dd>
+                <dt>Controllers</dt>
+                <dd><a href="action_controller_overview.html">Action Controller Overview</a></dd>
+                <dd><a href="routing.html">Rails Routing from the Outside In</a></dd>
+                <dt>Digging Deeper</dt>
+                <dd><a href="active_support_core_extensions.html">Active Support Core Extensions</a></dd>
+                <dd><a href="i18n.html">Rails Internationalization (I18n) API</a></dd>
+                <dd><a href="action_mailer_basics.html">Action Mailer Basics</a></dd>
+                <dd><a href="active_job_basics.html">Active Job Basics</a></dd>
+                <dd><a href="active_storage_overview.html">Active Storage Overview</a></dd>
+                <dd><a href="testing.html">Testing Rails Applications</a></dd>
+                <dd><a href="security.html">Securing Rails Applications</a></dd>
+                <dd><a href="debugging_rails_applications.html">Debugging Rails Applications</a></dd>
+                <dd><a href="configuring.html">Configuring Rails Applications</a></dd>
+                <dd><a href="command_line.html">The Rails Command Line</a></dd>
+                <dd><a href="asset_pipeline.html">The Asset Pipeline</a></dd>
+                <dd><a href="working_with_javascript_in_rails.html">Working with JavaScript in Rails</a></dd>
+                <dd><a href="autoloading_and_reloading_constants.html">Autoloading and Reloading Constants</a></dd>
+                <dd><a href="caching_with_rails.html">Caching with Rails: An Overview</a></dd>
+                <dd><a href="api_app.html">Using Rails for API-only Applications</a></dd>
+                <dd><a href="action_cable_overview.html">Action Cable Overview</a></dd>
+                <dt>Extending Rails</dt>
+                <dd><a href="rails_on_rack.html">Rails on Rack</a></dd>
+                <dd><a href="generators.html">Creating and Customizing Rails Generators &amp; Templates</a></dd>
+                <dt>Contributing to Ruby on Rails</dt>
+                <dd><a href="contributing_to_ruby_on_rails.html">Contributing to Ruby on Rails</a></dd>
+                <dd><a href="api_documentation_guidelines.html">API Documentation Guidelines</a></dd>
+                <dd><a href="ruby_on_rails_guides_guidelines.html">Ruby on Rails Guides Guidelines</a></dd>
+                <dt>Maintenance Policy</dt>
+                <dd><a href="maintenance_policy.html">Maintenance Policy for Ruby on Rails</a></dd>
+                <dt>Release Notes</dt>
+                <dd><a href="upgrading_ruby_on_rails.html">Upgrading Ruby on Rails</a></dd>
+                <dd><a href="5_2_release_notes.html">Ruby on Rails 5.2 Release Notes</a></dd>
+                <dd><a href="5_1_release_notes.html">Ruby on Rails 5.1 Release Notes</a></dd>
+                <dd><a href="5_0_release_notes.html">Ruby on Rails 5.0 Release Notes</a></dd>
+                <dd><a href="4_2_release_notes.html">Ruby on Rails 4.2 Release Notes</a></dd>
+                <dd><a href="4_1_release_notes.html">Ruby on Rails 4.1 Release Notes</a></dd>
+                <dd><a href="4_0_release_notes.html">Ruby on Rails 4.0 Release Notes</a></dd>
+                <dd><a href="3_2_release_notes.html">Ruby on Rails 3.2 Release Notes</a></dd>
+                <dd><a href="3_1_release_notes.html">Ruby on Rails 3.1 Release Notes</a></dd>
+                <dd><a href="3_0_release_notes.html">Ruby on Rails 3.0 Release Notes</a></dd>
+                <dd><a href="2_3_release_notes.html">Ruby on Rails 2.3 Release Notes</a></dd>
+                <dd><a href="2_2_release_notes.html">Ruby on Rails 2.2 Release Notes</a></dd>
+              </dl>
+          </div>
+        </li>
+        <li><a class="nav-item" href="contributing_to_ruby_on_rails.html">기여하기</a></li>
+        <li><a class="nav-item" href="credits.html">도와주신 분들</a></li>
+        <li class="guides-index guides-index-small">
+          <select class="guides-index-item nav-item">
+            <option value="index.html">가이드 목차</option>
+              <optgroup label="시작하기 전에">
+                  <option value="getting_started.html">레일스 시작하기</option>
+              </optgroup>
+              <optgroup label="모델">
+                  <option value="active_record_basics.html">액티브 레코드 기본</option>
+                  <option value="active_record_migrations.html">액티브 레코드 마이그레이션</option>
+                  <option value="active_record_validations.html">액티브 레코드 밸리데이션</option>
+                  <option value="active_record_callbacks.html">액티브 레코드 콜백</option>
+                  <option value="association_basics.html">액티브 레코드 관계</option>
+                  <option value="active_record_querying.html">액티브 레코드 검색 인터페이스</option>
+              </optgroup>
+              <optgroup label="뷰">
+                  <option value="layouts_and_rendering.html">레일스의 레이아웃과 렌더링</option>
+                  <option value="form_helpers.html">액션 뷰 폼 헬퍼</option>
+              </optgroup>
+              <optgroup label="콘트롤러">
+                  <option value="action_controller_overview.html">액션 콘트롤러 개요</option>
+                  <option value="routing.html">레일스 라우팅</option>
+              </optgroup>
+              <optgroup label="심화 내용">
+                  <option value="active_support_core_extensions.html">액티브 서포트 코어 확장</option>
+                  <option value="i18n.html">레일스 다국어 API</option>
+                  <option value="action_mailer_basics.html">액션 메일러 기본</option>
+                  <option value="active_job_basics.html">액티브 잡 기본</option>
+                  <option value="active_storage_overview.html">액티브 스토리지 개요</option>
+                  <option value="testing.html">레일스 애플리케이션 테스트</option>
+                  <option value="security.html">레일스 애플리케이션 보안</option>
+                  <option value="debugging_rails_applications.html">레일스 애플리케이션 디버깅</option>
+                  <option value="configuring.html">레일스 애플리케이션 설정</option>
+                  <option value="command_line.html">레일스 콘솔 명령어</option>
+                  <option value="asset_pipeline.html">애셋 파이프라인</option>
+                  <option value="working_with_javascript_in_rails.html">레일스에서 자바스크립트 사용하는 방법</option>
+                  <option value="autoloading_and_reloading_constants.html">상수를 자동으로 가져오고 다시 불러오는 기능</option>
+                  <option value="caching_with_rails.html">레일스로 캐싱하기: 개요</option>
+                  <option value="api_app.html">API만 사용하는 레일스 애플리케이션</option>
+                  <option value="action_cable_overview.html">액션 케이블 소개</option>
+              </optgroup>
+              <optgroup label="레일스 확장하기">
+                  <option value="rails_on_rack.html">레일스 온 랙</option>
+                  <option value="generators.html">레일스 제너레이터 만드는 방법</option>
+              </optgroup>
+              <optgroup label="루비 온 레일스에 기여하는 방법">
+                  <option value="contributing_to_ruby_on_rails.html">루비 온 레일스에 기여하는 방법</option>
+                  <option value="api_documentation_guidelines.html">API 문서 작성 지침</option>
+                  <option value="ruby_on_rails_guides_guidelines.html">루비 온 레일스 가이드 지침</option>
+              </optgroup>
+              <optgroup label="유지관리 정책">
+                  <option value="maintenance_policy.html">유지관리 정책</option>
+              </optgroup>
+              <optgroup label="릴리스 노트">
+                  <option value="upgrading_ruby_on_rails.html">루비 온 레일스 업그레이드 가이드</option>
+                  <option value="5_2_release_notes.html">루비 온 레일스 5.2 릴리스 노트</option>
+                  <option value="5_1_release_notes.html">루비 온 레일스 5.1 릴리스 노트</option>
+                  <option value="5_0_release_notes.html">루비 온 레일스 5.0 릴리스 노트</option>
+                  <option value="4_2_release_notes.html">루비 온 레일스 4.2 릴리스 노트</option>
+                  <option value="4_1_release_notes.html">루비 온 레일스 4.1 릴리스 노트</option>
+                  <option value="4_0_release_notes.html">루비 온 레일스 4.0 릴리스 노트</option>
+                  <option value="3_2_release_notes.html">루비 온 레일스 3.2 릴리스 노트</option>
+                  <option value="3_1_release_notes.html">Ruby on Rails 3.1 Release Notes</option>
+                  <option value="3_0_release_notes.html">루비 온 레일스 3.0 릴리스 노트</option>
+                  <option value="2_3_release_notes.html">루비 온 레일스 2.3 릴리스 노트</option>
+                  <option value="2_2_release_notes.html">루비 온 레일스 2.2 릴리스 노트</option>
+              </optgroup>
+              <optgroup label="시작하기 전에">
+                  <option value="getting_started.html">레일스 시작하기</option>
+              </optgroup>
+              <optgroup label="모델">
+                  <option value="active_record_basics.html">액티브 레코드 기본</option>
+                  <option value="active_record_migrations.html">액티브 레코드 마이그레이션</option>
+                  <option value="active_record_validations.html">액티브 레코드 밸리데이션</option>
+                  <option value="active_record_callbacks.html">Active Record Callbacks</option>
+                  <option value="association_basics.html">Active Record Associations</option>
+                  <option value="active_record_querying.html">Active Record Query Interface</option>
+              </optgroup>
+              <optgroup label="Views">
+                  <option value="layouts_and_rendering.html">Layouts and Rendering in Rails</option>
+                  <option value="form_helpers.html">Action View Form Helpers</option>
+              </optgroup>
+              <optgroup label="Controllers">
+                  <option value="action_controller_overview.html">Action Controller Overview</option>
+                  <option value="routing.html">Rails Routing from the Outside In</option>
+              </optgroup>
+              <optgroup label="Digging Deeper">
+                  <option value="active_support_core_extensions.html">Active Support Core Extensions</option>
+                  <option value="i18n.html">Rails Internationalization (I18n) API</option>
+                  <option value="action_mailer_basics.html">Action Mailer Basics</option>
+                  <option value="active_job_basics.html">Active Job Basics</option>
+                  <option value="active_storage_overview.html">Active Storage Overview</option>
+                  <option value="testing.html">Testing Rails Applications</option>
+                  <option value="security.html">Securing Rails Applications</option>
+                  <option value="debugging_rails_applications.html">Debugging Rails Applications</option>
+                  <option value="configuring.html">Configuring Rails Applications</option>
+                  <option value="command_line.html">The Rails Command Line</option>
+                  <option value="asset_pipeline.html">The Asset Pipeline</option>
+                  <option value="working_with_javascript_in_rails.html">Working with JavaScript in Rails</option>
+                  <option value="autoloading_and_reloading_constants.html">Autoloading and Reloading Constants</option>
+                  <option value="caching_with_rails.html">Caching with Rails: An Overview</option>
+                  <option value="api_app.html">Using Rails for API-only Applications</option>
+                  <option value="action_cable_overview.html">Action Cable Overview</option>
+              </optgroup>
+              <optgroup label="Extending Rails">
+                  <option value="rails_on_rack.html">Rails on Rack</option>
+                  <option value="generators.html">Creating and Customizing Rails Generators &amp; Templates</option>
+              </optgroup>
+              <optgroup label="Contributing to Ruby on Rails">
+                  <option value="contributing_to_ruby_on_rails.html">Contributing to Ruby on Rails</option>
+                  <option value="api_documentation_guidelines.html">API Documentation Guidelines</option>
+                  <option value="ruby_on_rails_guides_guidelines.html">Ruby on Rails Guides Guidelines</option>
+              </optgroup>
+              <optgroup label="Maintenance Policy">
+                  <option value="maintenance_policy.html">Maintenance Policy for Ruby on Rails</option>
+              </optgroup>
+              <optgroup label="Release Notes">
+                  <option value="upgrading_ruby_on_rails.html">Upgrading Ruby on Rails</option>
+                  <option value="5_2_release_notes.html">Ruby on Rails 5.2 Release Notes</option>
+                  <option value="5_1_release_notes.html">Ruby on Rails 5.1 Release Notes</option>
+                  <option value="5_0_release_notes.html">Ruby on Rails 5.0 Release Notes</option>
+                  <option value="4_2_release_notes.html">Ruby on Rails 4.2 Release Notes</option>
+                  <option value="4_1_release_notes.html">Ruby on Rails 4.1 Release Notes</option>
+                  <option value="4_0_release_notes.html">Ruby on Rails 4.0 Release Notes</option>
+                  <option value="3_2_release_notes.html">Ruby on Rails 3.2 Release Notes</option>
+                  <option value="3_1_release_notes.html">Ruby on Rails 3.1 Release Notes</option>
+                  <option value="3_0_release_notes.html">Ruby on Rails 3.0 Release Notes</option>
+                  <option value="2_3_release_notes.html">Ruby on Rails 2.3 Release Notes</option>
+                  <option value="2_2_release_notes.html">Ruby on Rails 2.2 Release Notes</option>
+              </optgroup>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr class="hide" />
+
+  <div id="feature">
+    <div class="wrapper">
+      <h2>액티브 레코드 마이그레이션</h2><p>마이그레이션(데이터베이스 이관)이라는 기능은 데이터베이스 스키마(테이블 구성)을 조금씩 자주
+바꾸거나 보태면서 개발할 수 있도록 해준다. SQL만으로 스키마 변경사항을 작성하지 않고,
+간결한 루비 DSL(특정 분야 맞춤 언어)를 사용하여 테이블 변경사항을 작성하도록
+해준다.</p><p>이 가이드의 내용:</p>
+<ul>
+<li>마이그레이션을 처음 만들 때 사용하는 제너레이터.</li>
+<li>데이터베이스를 변경하기 위한 액티브 레코드 메소드.</li>
+<li>마이그레이션과 스키마를 변경하는 bin/rails 태스크.</li>
+<li>마이그레이션을 <code>schema.rb</code> 파일에 어떻게 반영하는지.</li>
+</ul>
+
+
+                <div id="subCol">
+            <h3 class="chapter"><img src="images/chapters_icon.gif" alt="" />Chapters</h3>
+            <ol class="chapters">
+<li><a href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EA%B0%9C%EC%9A%94">마이그레이션 개요</a></li>
+<li>
+<a href="#%EC%B2%98%EC%9D%8C-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98">처음 만드는 마이그레이션</a>
+
+<ul>
+<li><a href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">마이그레이션 시작하기</a></li>
+<li><a href="#%EB%AA%A8%EB%8D%B8-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0">모델 제너레이터</a></li>
+<li><a href="#%EB%AA%A8%EB%94%94%ED%8C%8C%EC%9D%B4%EC%96%B4-%EC%A0%84%EB%8B%AC">모디파이어 전달</a></li>
+</ul>
+</li>
+<li>
+<a href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EA%B3%A0%EC%B3%90-%EC%93%B0%EA%B8%B0">마이그레이션 고쳐 쓰기</a>
+
+<ul>
+<li><a href="#%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%83%88%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0">테이블 새로 만들기</a></li>
+<li><a href="#%EC%A1%B0%EC%9D%B8-%ED%85%8C%EC%9D%B4%EB%B8%94-%EB%A7%8C%EB%93%A4%EA%B8%B0">조인 테이블 만들기</a></li>
+<li><a href="#%ED%85%8C%EC%9D%B4%EB%B8%94-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">테이블 변경하기</a></li>
+<li><a href="#%EC%BB%AC%EB%9F%BC%EC%9D%84-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">컬럼을 변경하기</a></li>
+<li><a href="#%EC%BB%AC%EB%9F%BC-%EB%AA%A8%EB%94%94%ED%8C%8C%EC%9D%B4%EC%96%B4">컬럼 모디파이어</a></li>
+<li><a href="#%EC%99%B8%EB%9E%98-%ED%82%A4">외래 키</a></li>
+<li><a href="#%ED%97%AC%ED%8D%BC%EB%A7%8C%EC%9C%BC%EB%A1%9C-%EB%B6%80%EC%A1%B1%ED%95%A0-%EB%95%8C">헬퍼만으로 부족할 때</a></li>
+<li><a href="#change-%EB%A9%94%EC%86%8C%EB%93%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><code>change</code> 메소드 사용하기</a></li>
+<li><a href="#reversible-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><code>reversible</code> 사용하기</a></li>
+<li><a href="#up-down-%EB%A9%94%EC%86%8C%EB%93%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0"><code>up</code>/<code>down</code> 메소드 사용하기</a></li>
+<li><a href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98%EC%9D%84-%EC%9D%B4%EC%A0%84-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%90%98%EB%8F%8C%EB%A6%AC%EA%B8%B0">마이그레이션을 이전 상태로 되돌리기</a></li>
+</ul>
+</li>
+<li>
+<a href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">마이그레이션 실행하기</a>
+
+<ul>
+<li><a href="#%EB%A1%A4%EB%B0%B1%ED%95%98%EA%B8%B0">롤백하기</a></li>
+<li><a href="#%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%85%8B%EC%97%85%ED%95%98%EA%B8%B0">데이터베이스 셋업하기</a></li>
+<li><a href="#%ED%85%8C%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%A6%AC%EC%85%8B%ED%95%98%EA%B8%B0">테이터베이스 리셋하기</a></li>
+<li><a href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EB%B2%84%EC%A0%84%EC%9D%84-%EC%B0%8D%EC%96%B4%EC%84%9C-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">마이그레이션 버전을 찍어서 실행하기</a></li>
+<li><a href="#%EB%8B%A4%EB%A5%B8-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">다른 환경에서 마이그레이션 실행하기</a></li>
+<li><a href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%A4%ED%96%89-%EA%B2%B0%EA%B3%BC-%EC%B6%9C%EB%A0%A5-%EB%A9%94%EC%8B%9C%EC%A7%80%EB%A5%BC-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0">마이그레이션 실행 결과 출력 메시지를 수정하기</a></li>
+</ul>
+</li>
+<li><a href="#%EA%B8%B0%EC%A1%B4-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">기존 마이그레이션 변경하기</a></li>
+<li>
+<a href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%EB%8D%A4%ED%94%84%EC%9D%98-%EC%9D%98%EB%AF%B8">스키마 덤프의 의미</a>
+
+<ul>
+<li><a href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%ED%8C%8C%EC%9D%BC%EC%9D%98-%EB%AA%A9%EC%A0%81%EC%9D%80-questionmark">스키마 파일의 목적은?</a></li>
+<li><a href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%EB%8D%A4%ED%94%84-%EC%9C%A0%ED%98%95">스키마 덤프 유형</a></li>
+<li><a href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%EB%8D%A4%ED%94%84%EC%99%80-%EC%86%8C%EC%8A%A4-%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC">스키마 덤프와 소스 버전 관리</a></li>
+</ul>
+</li>
+<li><a href="#%EC%95%A1%ED%8B%B0%EB%B8%8C-%EB%A0%88%EC%BD%94%EB%93%9C%EC%99%80-%EC%B0%B8%EC%A1%B0-%EB%AC%B4%EA%B2%B0%EC%84%B1">액티브 레코드와 참조 무결성</a></li>
+<li><a href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98%EA%B3%BC-%EC%8B%9C%EB%93%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0">마이그레이션과 시드 데이터</a></li>
+</ol>
+
+          </div>
+
+    </div>
+  </div>
+
+  <div id="container">
+    <div class="wrapper">
+      <div id="mainCol">
+        <h3 id="마이그레이션-개요"><a class="anchorlink" href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EA%B0%9C%EC%9A%94">1 마이그레이션 개요</a></h3><p>마이그레이션은
+<a href="https://en.wikipedia.org/wiki/Schema_migration">테이터베이스 스키마를 자주 바꾸는</a>
+편리한 방법으로 바꾸는 중간에 꼬이지 않으며 쉽다. 마이그레이션은 루비 DSL로 작성하여,
+SQL을 직접 작성하지 않고서, 스키마와 변경 사항을 데이터베이스와 분리하여 관리할 수 있도록 해준다.</p><p>마이그레이션마다 테이터베이스 '버전'이 새로 바뀐다고 볼 수 있다.
+스키마는 데이터베이스가 비어있는 채로 시작한다. 마이그레이션을 하나씩 실행하면 테이블, 컬럼, 엔트리를
+테이터베이스에 추가하거나 삭제한다. 액티브 레코드는 스키마를
+시간 순서에 따라 어느 시점이든 최신 버전으로 마이그레이션할 과정을 안다.
+액티브 레코드는 테이터베이스 최신 구조와 일치하기 위해
+<code>db/schema.rb</code> 파일을 수정한다.</p><p>마이그레이션 파일의 예는 다음과 같다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class CreateProducts &lt; ActiveRecord::Migration[5.0]
+  def change
+    create_table :products do |t|
+      t.string :name
+      t.text :description
+
+      t.timestamps
+    end
+  end
+end
+
+</pre>
+</div>
+<p>위 마이그레이션은 문자열 컬럼인 <code>name</code>과 텍스트 컬럼인 <code>description</code>으로
+<code>products</code> 테이블을 만든다. 마이그레이션에 넣지 않아도
+프라이머리 키 컬럼인 <code>id</code>를 만든다. 프라이머리 키를 따로 지정하지 않는 한 액티브
+레코드 모델이 <code>id</code>를 프라이머리 키로 사용하기 때문이다. <code>timestamp</code> 매크로는 <code>created_at</code>과
+<code>updated_at</code> 컬럼을 만든다. 테이블에 이 컬럼이 있으면 액티브 레코드가
+관리한다.</p><p>다만, 여기서는 앞으로 실행할 변경 사항에 대해 메소드를 정의하였다.
+마이그레이션을 실행하기 전까지 테이블은 없다. 실행을 하여야 테이블이
+생긴다. 액티브 레코드는 마이그레이션을 어떻게 되돌릴지 안다: 위 마이그레이션을
+롤백하면, 위에서 만든 테이블을 삭제한다.</p><p>테이블 스키마를 변경하는 SQL문의 트랜잭션을 지원하는 테이터베이스는,
+여러 마이그레이션들을 트랜잭션 하나로 감싼다. 트랜잭션을 지원하지 않는 테이터베이스는
+트랜잭션으로 감싼 마이그레이션 중 하나가 실패하면 그 전까지 실행한 마이그레이션을 롤백하지
+못한다. 변경사항을 여러분이 직접 롤백하여야 한다.</p><div class="note"><p>트랜잭션으로 감쌀 수 없는 SQL문이 있다.
+데이터베이스 어댑터가 DDL 트랜잭션을 지원하면 <code>disable_ddl_transaction!</code>을
+실행하여 마이그레이션 하나만 실행하도록 기능을 끌 수 있다.</p></div><p>액티브 레코드가 아닌 여러분이 마이그레이션을
+되돌리려면, <code>reversible</code>을 사용할 수 있다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class ChangeProductsPrice &lt; ActiveRecord::Migration[5.0]
+  def change
+    reversible do |dir|
+      change_table :products do |t|
+        dir.up   { t.change :price, :string }
+        dir.down { t.change :price, :integer }
+      end
+    end
+  end
+end
+
+</pre>
+</div>
+<p><code>change</code> 메소드를 <code>up</code>과 <code>down</code>으로 나누어 써도 된다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class ChangeProductsPrice &lt; ActiveRecord::Migration[5.0]
+  def up
+    change_table :products do |t|
+      t.change :price, :string
+    end
+  end
+
+  def down
+    change_table :products do |t|
+      t.change :price, :integer
+    end
+  end
+end
+
+</pre>
+</div>
+<h3 id="처음-만드는-마이그레이션"><a class="anchorlink" href="#%EC%B2%98%EC%9D%8C-%EB%A7%8C%EB%93%9C%EB%8A%94-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98">2 처음 만드는 마이그레이션</a></h3><h4 id="마이그레이션-시작하기"><a class="anchorlink" href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%9C%EC%9E%91%ED%95%98%EA%B8%B0">2.1 마이그레이션 시작하기</a></h4><p>마이그레이션은 <code>db/migrate</code> 디렉토리에 마이그레이션 클래스마다 하나씩
+파일로 저장한다. 파일 이름 형식은
+<code>YYYYMMDDHHMMSS_create_products.rb</code>이다. UTC 시각 뒤에
+밑줄 글자로 마이그레이션 이름을 붙여써서
+구분한다. 마이그레이션 클래스 이름(카멜케이스, 단어 첫글자만 대문자)은
+마이그레이션 파일 뒷부분과 일치해야 한다. 파일 이름이
+<code>20080906120000_create_products.rb</code>이라면 <code>CreateProducts</code> 클래스가 있어야 하고
+<code>20080906120001_add_details_to_products.rb</code>이라면
+<code>AddDetailsToProducts</code> 클래스가 있어야 한다. 레일스는 파일이름의
+시각으로 마이그레이션 실행 순서를 정한다. 따라서 다른 곳에서
+마이그레이션 파일을 복사하거나 새로 만들 때, 마이그레이션 순서가 매우 중요하다.</p><p>시각을 계산하기가 번거롭기 때문에 액티브 레코드
+제너레이터는 다음과 같이 처리한다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails generate migration AddPartNumberToProducts
+
+</pre>
+</div>
+<p>제너레이터는 적절한 이름으로 마이그레이션 클래스를 만들지만 변경사항에 대한 코드를 만들지 않는다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class AddPartNumberToProducts &lt; ActiveRecord::Migration[5.0]
+  def change
+  end
+end
+
+</pre>
+</div>
+<p>"AddXXXToYYY", "RemoveXXXFromYYY"과 같은 마이그레이션 이름
+뒤에 컬럼 이름과 타입을 쓰면
+<code>add_column</code>과 <code>remove_column</code>를 만든다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails generate migration AddPartNumberToProducts part_number:string
+
+</pre>
+</div>
+<p>실행 결과</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class AddPartNumberToProducts &lt; ActiveRecord::Migration[5.0]
+  def change
+    add_column :products, :part_number, :string
+  end
+end
+
+</pre>
+</div>
+<p>새로 추가할 컬럼의 인덱스도 만들려면, 다음과 같다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails generate migration AddPartNumberToProducts part_number:string:index
+
+</pre>
+</div>
+<p>실행 결과</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class AddPartNumberToProducts &lt; ActiveRecord::Migration[5.0]
+  def change
+    add_column :products, :part_number, :string
+    add_index :products, :part_number
+  end
+end
+
+</pre>
+</div>
+<p>컬럼을 추가하듯이, 컬럼을 삭제하는 마이그레이션은 다음과 같이 실행한다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails generate migration RemovePartNumberFromProducts part_number:string
+
+</pre>
+</div>
+<p>실행 결과</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class RemovePartNumberFromProducts &lt; ActiveRecord::Migration[5.0]
+  def change
+    remove_column :products, :part_number, :string
+  end
+end
+
+</pre>
+</div>
+<p>마이그레이션은 컬럼을 하나 더 써도 된다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails generate migration AddDetailsToProducts part_number:string price:decimal
+
+</pre>
+</div>
+<p>실행 결과</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class AddDetailsToProducts &lt; ActiveRecord::Migration[5.0]
+  def change
+    add_column :products, :part_number, :string
+    add_column :products, :price, :decimal
+  end
+end
+
+</pre>
+</div>
+<p>마이그레이션 이름이 "CreateXXX"이고
+마이그레이션 이름 뒤에 컬럼 이름과 타입을 나열하면
+XXX 테이블과 컬럼을 만든다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails generate migration CreateProducts name:string part_number:string
+
+</pre>
+</div>
+<p>실행 결과</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class CreateProducts &lt; ActiveRecord::Migration[5.0]
+  def change
+    create_table :products do |t|
+      t.string :name
+      t.string :part_number
+    end
+  end
+end
+
+</pre>
+</div>
+<p>이처럼 마이그레이션 만든 다음 시작한다. 이 마이그레이션에
+추가하거나 삭제하려면
+<code>db/migrate/YYYYMMDDHHMMSS_add_details_to_products.rb</code> 파일을 편집할 수 있다.</p><p>제너레이터는 컬럼 타입으로 <code>references</code>
+(<code>belongs_to</code>)를 사용할 수 있다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails generate migration AddUserRefToProducts user:references
+
+</pre>
+</div>
+<p>실행 결과</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class AddUserRefToProducts &lt; ActiveRecord::Migration[5.0]
+  def change
+    add_reference :products, :user, foreign_key: true
+  end
+end
+
+</pre>
+</div>
+<p>이 마이그레이션으로 <code>user_id</code> 컬럼과 관련 인덱스를 만든다.
+<code>add_reference</code> 옵셥은 <a href="http://edgeapi.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html#method-i-add_reference">API 문서</a>를 참조한다.</p><p>테이블 두개 이상을 조인할 때 사용하는 테이블을 만들려면 마이그레이션 이름에 <code>JoinTable</code>를 쓴다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails g migration CreateJoinTableCustomerProduct customer product
+
+</pre>
+</div>
+<p>실행 결과 다음과 같은 마이그레이션을 만든다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class CreateJoinTableCustomerProduct &lt; ActiveRecord::Migration[5.0]
+  def change
+    create_join_table :customers, :products do |t|
+      # t.index [:customer_id, :product_id]
+      # t.index [:product_id, :customer_id]
+    end
+  end
+end
+
+</pre>
+</div>
+<h4 id="모델-제너레이터"><a class="anchorlink" href="#%EB%AA%A8%EB%8D%B8-%EC%A0%9C%EB%84%88%EB%A0%88%EC%9D%B4%ED%84%B0">2.2 모델 제너레이터</a></h4><p>모델과 스캐폴드 제너레이터는 모델을 새로 추가하기 위한
+마이그레이션을 만든다. 마이그레이션 안에 해당 테이블을 만드는 코드가
+있다. 컬럼을 더 추가하고 싶다면,
+다음과 같이 할 수 있다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails generate model Product name:string description:text
+
+</pre>
+</div>
+<p>실행 결과 다음과 같은 마이그레이션을 만든다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class CreateProducts &lt; ActiveRecord::Migration[5.0]
+  def change
+    create_table :products do |t|
+      t.string :name
+      t.text :description
+
+      t.timestamps
+    end
+  end
+end
+
+</pre>
+</div>
+<p>컬럼 이름/타입을 쌍으로 더 많이 붙여 넣을 수 있다.</p><h4 id="모디파이어-전달"><a class="anchorlink" href="#%EB%AA%A8%EB%94%94%ED%8C%8C%EC%9D%B4%EC%96%B4-%EC%A0%84%EB%8B%AC">2.3 모디파이어 전달</a></h4><p>자주 사용하는 <a href="#%EC%BB%AC%EB%9F%BC-%EB%AA%A8%EB%94%94%ED%8C%8C%EC%9D%B4%EC%96%B4">타입 모디파이어</a>를 명령어에
+직접 사용할 수 있다. 모디파이어는 타입 뒤에 중괄호로 감싸서 사용한다.</p><p>다음과 같이 실행한다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails generate migration AddDetailsToProducts 'price:decimal{5,2}' supplier:references{polymorphic}
+
+</pre>
+</div>
+<p>실행결과 마이그레이션은 다음과 같다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class AddDetailsToProducts &lt; ActiveRecord::Migration[5.0]
+  def change
+    add_column :products, :price, :decimal, precision: 5, scale: 2
+    add_reference :products, :supplier, polymorphic: true
+  end
+end
+
+</pre>
+</div>
+<div class="info"><p>모디파이어는 제너레이터 도움말을 참조한다. (<code>rails generate model --help</code>)</p></div><h3 id="마이그레이션-고쳐-쓰기"><a class="anchorlink" href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EA%B3%A0%EC%B3%90-%EC%93%B0%EA%B8%B0">3 마이그레이션 고쳐 쓰기</a></h3><p>제너레이터로 새로 만든 마이그레이션을
+고쳐 쓸 차례다!</p><h4 id="테이블-새로-만들기"><a class="anchorlink" href="#%ED%85%8C%EC%9D%B4%EB%B8%94-%EC%83%88%EB%A1%9C-%EB%A7%8C%EB%93%A4%EA%B8%B0">3.1 테이블 새로 만들기</a></h4><p><code>create_table</code> 메소드는 매우 중요하다.
+모델과 스캐폴드 제너레이터를 실행하면 이 메소드를 만들어 준다. 그 예는
+다음과 같다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+create_table :products do |t|
+  t.string :name
+end
+
+</pre>
+</div>
+<p><code>name</code> 컬럼(그리고 <code>id</code> 컬럼, 아래에서 설명)을 가진 <code>products</code>
+테이블을 만든다.</p><p><code>create_table</code>은 프라이머리 키로 <code>id</code> 컬럼을 만든다.  프라이머리 키를 바꾸려면
+<code>:primary_key</code> 옵션을 쓴다.(마이그레이션에 해당하는 모델도 바꾸어야 한다)
+프라이머리 키를 사용하지 않으려면,
+<code>id: false</code> 옵션을 쓴다. SQL문으로 테이터베이스 옵션을 따로 설정하려면
+<code>:option</code> 옵션을 쓴다. 그 예는 다음과 같다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+create_table :products, options: "ENGINE=BLACKHOLE" do |t|
+  t.string :name, null: false
+end
+
+</pre>
+</div>
+<p>실행 결과 테이블을 생성하는 SQL문에 <code>ENGINE=BLACKHOLE</code> 옵션을 붙여준다.</p><p><code>:comment</code> 옵션으로 테이블과 컬럼 설명을 전달하면
+데이터베이스에 설명을 저장하고
+MySQL Workbench, PgAdmin III와 같은 테이터베이스 관리 툴로 설명을 볼 수 있다. 대형 데이터베이스를 사용하는
+애플리케이션의 마이그레이션에 대해 코멘트를 달면 공동 작업하는 사람들이
+데이터 모델을 이해하고 문서를 작성하는데 도움이 된다.
+현재 MySQL과 PostgreSQL 데이터베이스 어댑터만 코멘트를 지원한다.</p><h4 id="조인-테이블-만들기"><a class="anchorlink" href="#%EC%A1%B0%EC%9D%B8-%ED%85%8C%EC%9D%B4%EB%B8%94-%EB%A7%8C%EB%93%A4%EA%B8%B0">3.2 조인 테이블 만들기</a></h4><p>마이그레이션 메소드 <code>create_join_table</code>은 HABTM(
+has and belongs to many, 다대다 관계) 조인 테이블을 만든다. 예는 다음과 같다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+create_join_table :products, :categories
+
+</pre>
+</div>
+<p><code>category_id</code>와 <code>product_id</code> 컬럼이 있는 <code>categories_products</code> 테이블을 만든다.
+이 컬럼은 별다른 옵션이 없으면 <code>:null</code> 옵션이 <code>false</code>이다.
+옵션을 다르게 설정하려면 <code>:column_options</code> 옵션을 다음과 같이
+설정한다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+create_join_table :products, :categories, column_options: { null: true }
+
+</pre>
+</div>
+<p>조인 테이블 이름은 create_join_table에 전달하는 아규먼트 2개를
+알파벳 순서로 합친다.
+조인 테이블 이름 바꾸려면, <code>:table_name</code> 옵션을 사용한다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+create_join_table :products, :categories, table_name: :categorization
+
+</pre>
+</div>
+<p><code>categorization</code> 테이블을 만든다.</p><p><code>create_join_table</code>에 블록을 전달할 수 있다. 블록에는 인덱스를
+추가하거나(그냥 인덱스를 걸어주지 않음) 다른 컬럼을 추가할 수 있다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+create_join_table :products, :categories do |t|
+  t.index :product_id
+  t.index :category_id
+end
+
+</pre>
+</div>
+<h4 id="테이블-변경하기"><a class="anchorlink" href="#%ED%85%8C%EC%9D%B4%EB%B8%94-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">3.3 테이블 변경하기</a></h4><p><code>create_table</code>과 닮은 <code>change_table</code>은 기존 테이블을 변경할 때 사용한다.
+<code>create_table</code>과 비슷한 방식이지만 전달하는 블록에
+다음과 같이 자세히 설정한다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+change_table :products do |t|
+  t.remove :description, :name
+  t.string :part_number
+  t.index :part_number
+  t.rename :upccode, :upc_code
+end
+
+</pre>
+</div>
+<p><code>description</code>과 <code>name</code> 컬럼을 삭제하고 <code>part_number</code> 문자열 컬럼을 새로 만들어
+인덱스도 만든다. <code>upccode</code> 컬럼 이름을 변경한다.</p><h4 id="컬럼을-변경하기"><a class="anchorlink" href="#%EC%BB%AC%EB%9F%BC%EC%9D%84-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">3.4 컬럼을 변경하기</a></h4><p><code>remove_column</code>과 <code>add_column</code>처럼 레일스는 <code>chage_column</code>이라는
+마이그레이션 메소드를 사용한다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+change_column :products, :part_number, :text
+
+</pre>
+</div>
+<p>여기서는 products 테이블의 <code>part_number</code> 컬럼 타입을 <code>:text</code>로 변경한다.
+다만, <code>change_column</code>은 한번 실행하면 되돌릴 수 없다.</p><p><code>change_column</code> 메소드 말고도 <code>change_column_null</code>과 <code>change_column_default</code>
+메소드는 not null 제한을 설정하고 컬럼의
+디폴트값을 변경한다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+change_column_null :products, :name, false
+change_column_default :products, :approved, from: true, to: false
+
+</pre>
+</div>
+<p>여기서 products 테이블의 <code>:name</code> 컬럼을 <code>NOT NULL</code>로 설정하고
+<code>:approved</code> 컬럼의 디폴트값을 true에서 false로 변경한다.</p><div class="note"><p>위에서 처럼 <code>change_column_default</code> 마이그레이션을
+<code>change_column_default :products, :approved, false</code>처럼 사용할 수도 있겠으나,
+from, to 없이 사용하는 마이그레이션은 되돌릴 수 없다.</p></div><h4 id="컬럼-모디파이어"><a class="anchorlink" href="#%EC%BB%AC%EB%9F%BC-%EB%AA%A8%EB%94%94%ED%8C%8C%EC%9D%B4%EC%96%B4">3.5 컬럼 모디파이어</a></h4><p>컬럼을 새로 만들거나 변경할 떄 컬럼 모디파이어를 사용할 수 있다:</p>
+<ul>
+<li>
+<code>limit</code>는 <code>string/text/binary/integer</code> 컬럼의 최대 길이/크기를 제한한다.</li>
+<li>
+<code>precision</code>는 <code>decimal</code> 컬럼의
+자리수를 정한다.</li>
+<li>
+<code>scale</code>은 <code>decimal</code> 컬럼의 소수점이하
+자리수를 정한다.</li>
+<li>
+<code>polymorphic</code>은 <code>belongs_to</code> 관계의 <code>type</code> 컬럼을 추가한다.</li>
+<li>
+<code>null</code>은 컬럼의 <code>NULL</code> 값을 허용하거나 제한한다.</li>
+<li>
+<code>default</code>는 컬럼의 디폴트값을 설정한다. 단, 날짜와 같이
+계속 바뀌는 값으로 디포틀값을 설정하더라도 마이그레이션을
+실행하는 시점의 날짜로만 고정한다.</li>
+<li>
+<code>index</code>는 컬럼의 인덱스를 추가한다.</li>
+<li>
+<code>comment</code>는 컬럼의 코멘트를 추가한다.</li>
+</ul>
+<p>데이터베이스 어댑터에 따라 다른 옵션도 쓸 수 있어서
+해당 어댑터의 API 문서를 참조한다.</p><div class="note"><p><code>null</code>과 <code>default</code>는 쉘 명령어로 실행할 수 없다.</p></div><h4 id="외래-키"><a class="anchorlink" href="#%EC%99%B8%EB%9E%98-%ED%82%A4">3.6 외래 키</a></h4><p>외래 키가 꼭 필요하지는 않지만 외래 키를 추가하여
+<a href="#%EC%95%A1%ED%8B%B0%EB%B8%8C-%EB%A0%88%EC%BD%94%EB%93%9C%EC%99%80-%EC%B0%B8%EC%A1%B0-%EB%AC%B4%EA%B2%B0%EC%84%B1">참조 무결성을 깨지 않고 싶다면</a> 다음과 같다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+add_foreign_key :articles, :authors
+
+</pre>
+</div>
+<p>여기서 <code>articles</code> 테이블의 외래 키로 <code>author_id</code> 컬럼을 추가한다.
+이 외래 키는 <code>authors</code> 테이블의 <code>id</code> 컬럼을 참조한다.
+컬럼 이름을 테이블 이름에서 따오지 못하면,
+<code>:column</code>과 <code>:primary_key</code> 옵션을 사용할 수 있다.</p><p>레일스에서 모든 외래 키 이름은 <code>fk_rails_</code>로 시작하고
+뒤에 오는 이름은 <code>from_table</code>과 <code>column</code>으로
+문자 10개를 조합한다.
+<code>:name</code> 옵션으로 외래 키의 이름을 다르게 설정할 수 있다.</p><div class="note"><p>액티브 레코드는 컬럼 한개만 사용하는 외래 키를 지원한다. 컬럼 두개 이상으로 조합하는 외래 키는 <code>execute</code>와
+<code>structure.sql</code>을 써야 한다.
+<a href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%EB%8D%A4%ED%94%84%EC%9D%98-%EC%9D%98%EB%AF%B8">스키마 덤프의 의미</a> 참조</p></div><p>외래 키를 삭제하는 방법은 다음과 같다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# 액티브 레코드가 컬럼 이름을 유추한다.
+remove_foreign_key :accounts, :branches
+
+# 외래 키로 사용하는 컬럼 이름을 쓴다.
+remove_foreign_key :accounts, column: :owner_id
+
+# 테이터베이스 외래 키 제약조의 이름으로 외래 키를 삭제한다.
+remove_foreign_key :accounts, name: :special_fk_name
+
+</pre>
+</div>
+<h4 id="헬퍼만으로-부족할-때"><a class="anchorlink" href="#%ED%97%AC%ED%8D%BC%EB%A7%8C%EC%9C%BC%EB%A1%9C-%EB%B6%80%EC%A1%B1%ED%95%A0-%EB%95%8C">3.7 헬퍼만으로 부족할 때</a></h4><p>액티브 레코드의 헬퍼만으로 부족할 때
+SQL문을 실행하는 <code>execute</code>를 사용할 수 있다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+Product.connection.execute("UPDATE products SET price = 'free' WHERE 1=1")
+
+</pre>
+</div>
+<p>메소드에 대한 더 자세한 내용은
+API 문서를 보라.
+<a href="http://edgeapi.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/SchemaStatements.html"><code>ActiveRecord::ConnectionAdapters::SchemaStatements</code></a>
+(<code>change</code>, <code>up</code>, <code>down</code> 메소드에 관한 내용),
+<a href="http://edgeapi.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/TableDefinition.html"><code>ActiveRecord::ConnectionAdapters::TableDefinition</code></a>
+(<code>create_table</code> 메소드에 전달하는 블록 객체에 관한 내용)
+그리고
+<a href="http://edgeapi.rubyonrails.org/classes/ActiveRecord/ConnectionAdapters/Table.html"><code>ActiveRecord::ConnectionAdapters::Table</code></a>
+(<code>change_table</code> 메소드에 전달하는 블록 객체에 관한 내용).</p><h4 id="change-메소드-사용하기"><a class="anchorlink" href="#change-%EB%A9%94%EC%86%8C%EB%93%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">3.8 <code>change</code> 메소드 사용하기</a></h4><p><code>change</code> 메소드는 마이그레이션을 작성하는 첫번째 방법이다.
+대부분의 경우 액티브 레코드는 마이그레이션을 되돌릴 수 있는
+방법을 안다. 현재, <code>change</code> 메소드는 다음과 같은 마이그레이션만
+지원한다:</p>
+<ul>
+<li>add_column</li>
+<li>add_foreign_key</li>
+<li>add_index</li>
+<li>add_reference</li>
+<li>add_timestamps</li>
+<li>change_column_default (:from과 :to 옵션을 써야 한다)</li>
+<li>change_column_null</li>
+<li>create_join_table</li>
+<li>create_table</li>
+<li>disable_extension</li>
+<li>drop_join_table</li>
+<li>drop_table (블록을 아규먼트로 전달해야 한다)</li>
+<li>enable_extension</li>
+<li>remove_column (타입을 써야 한다)</li>
+<li>remove_foreign_key (참조할 테이블 이름을 써야 한다)</li>
+<li>remove_index</li>
+<li>remove_reference</li>
+<li>remove_timestamps</li>
+<li>rename_column</li>
+<li>rename_index</li>
+<li>rename_table</li>
+</ul>
+<p><code>change_table</code> 마이그레이션은 되돌릴 수 있으나, 블록 안에서 <code>change</code>,
+<code>change_default</code>, <code>remove</code>를 호출하면 되돌릴 수 없다.</p><p><code>reomve_column</code> 마이그레이션을 되돌리려면 컬럼 타입이 필요하다.
+본래 컬럼 타입을 옵션으로 주지 않으면
+레일스는 롤백할 때 컬럼을 재구성하지 못한다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+remove_column :posts, :slug, :string, null: false, default: '', index: true
+
+</pre>
+</div>
+<p>다른 메소드를 써야 할 때,
+<code>change</code> 메소드 대신 <code>up</code>과 <code>down</code> 메소드를 사용하거나 <code>reversible</code> 메소드를 사용해야 한다.</p><h4 id="reversible-사용하기"><a class="anchorlink" href="#reversible-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">3.9 <code>reversible</code> 사용하기</a></h4><p>마이그레이션은 액티브 레코드가 되돌릴 방법을 알지 못할 정도로
+복잡할 수 있다. <code>reversible</code>을 사용하여 스키마를 되돌려야 할 때
+무엇을 해야 하는지 정할 수 있다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class ExampleMigration &lt; ActiveRecord::Migration[5.0]
+  def change
+    create_table :distributors do |t|
+      t.string :zipcode
+    end
+
+    reversible do |dir|
+      dir.up do
+        # add a CHECK constraint
+        execute &lt;&lt;-SQL
+          ALTER TABLE distributors
+            ADD CONSTRAINT zipchk
+              CHECK (char_length(zipcode) = 5) NO INHERIT;
+        SQL
+      end
+      dir.down do
+        execute &lt;&lt;-SQL
+          ALTER TABLE distributors
+            DROP CONSTRAINT zipchk
+        SQL
+      end
+    end
+
+    add_column :users, :home_page_url, :string
+    rename_column :users, :email, :email_address
+  end
+end
+
+</pre>
+</div>
+<p><code>reversible</code>을 사용할 때 실행 순서가 매우 중요하다.
+위 마이그레이션을 되돌리려고 할 때,
+<code>down</code> 블록을 실행하는 순서는 <code>home_page_url</code> 컬럼을 삭제한 다음과
+<code>distributors</code> 테이블을 지우기 직전이다.</p><p>확실히 되돌릴 수 없는 마이그레이션을 실행할 때도 있다. 마이그레이션을 되돌리면 데이터가 지워지는 경우다. 그럴 때는 <code>down</code> 블록에서
+<code>ActiveRecord::IrreversibleMigration</code> 예외를 발생시킬 수 있다.
+누군가 마이그레이션을
+되돌리려고 할 때, 마이그레이션을 되돌리지 못한다고
+에러메시지가 뜰 것이다.</p><h4 id="up-down-메소드-사용하기"><a class="anchorlink" href="#up-down-%EB%A9%94%EC%86%8C%EB%93%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0">3.10 <code>up</code>/<code>down</code> 메소드 사용하기</a></h4><p><code>change</code> 메소드 보다 예전 방식인 <code>up</code>과 <code>down</code> 메소드를
+사용할 수 있다.
+<code>up</code> 메소드는 스키마를 만들고,
+<code>down</code> 메소드는 <code>up</code> 메소드로 만든 스키마를 되돌린다.
+곧, <code>up</code> 다음에 <code>down</code>을 실행하면 데이터베이스 스키마는 변하지 않는다.
+만약 <code>up</code> 메소드로 테이블을 만들면,
+<code>down</code> 메소드로 테이블 삭제해야 한다.
+<code>up</code> 메소드에서 작성한 순서와 반대로 <code>down</code> 메소드에서 작성하는 것이 좋다.
+<code>reversible</code> 섹션을 <code>up</code>과 <code>down</code>으로 풀어쓰면 다음과 같다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class ExampleMigration &lt; ActiveRecord::Migration[5.0]
+  def up
+    create_table :distributors do |t|
+      t.string :zipcode
+    end
+
+    # add a CHECK constraint
+    execute &lt;&lt;-SQL
+      ALTER TABLE distributors
+        ADD CONSTRAINT zipchk
+        CHECK (char_length(zipcode) = 5);
+    SQL
+
+    add_column :users, :home_page_url, :string
+    rename_column :users, :email, :email_address
+  end
+
+  def down
+    rename_column :users, :email_address, :email
+    remove_column :users, :home_page_url
+
+    execute &lt;&lt;-SQL
+      ALTER TABLE distributors
+        DROP CONSTRAINT zipchk
+    SQL
+
+    drop_table :distributors
+  end
+end
+
+</pre>
+</div>
+<p>마이그레이션을 되돌리지 말아야 할 때, <code>down</code> 메소드에서
+<code>ActiveRecord::IrreversibleMigration</code> 예외를 발생시키야 한다. 누군가 마이그레이션을
+되돌리려고 할 때, 마이그레이션을 되돌리지 못한다고
+에러메시지가 뜰 것이다.</p><h4 id="마이그레이션을-이전-상태로-되돌리기"><a class="anchorlink" href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98%EC%9D%84-%EC%9D%B4%EC%A0%84-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%90%98%EB%8F%8C%EB%A6%AC%EA%B8%B0">3.11 마이그레이션을 이전 상태로 되돌리기</a></h4><p>마이그레이션을 롤백하려면 <code>revert</code> 메소드를 사용할 수 있다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+require_relative '20121212123456_example_migration'
+
+class FixupExampleMigration &lt; ActiveRecord::Migration[5.0]
+  def change
+    revert ExampleMigration
+
+    create_table(:apples) do |t|
+      t.string :variety
+    end
+  end
+end
+
+</pre>
+</div>
+<p><code>revert</code> 메소드에 되돌릴 순서를 블록으로 전달할 수 있다.
+이전 마이그레이션 중 일부분만 되돌릴 때 유용하다.
+<code>ExampleMigration</code>을 커밋하였다고 가정한다. 우편번호를 검증하는 <code>CHECK</code> 제약조건 대신
+액티브 레코드 밸리데이션이 더 좋다고
+판단하는 경우는 다음과 같다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class DontUseConstraintForZipcodeValidationMigration &lt; ActiveRecord::Migration[5.0]
+  def change
+    revert do
+      # copy-pasted code from ExampleMigration
+      reversible do |dir|
+        dir.up do
+          # add a CHECK constraint
+          execute &lt;&lt;-SQL
+            ALTER TABLE distributors
+              ADD CONSTRAINT zipchk
+                CHECK (char_length(zipcode) = 5);
+          SQL
+        end
+        dir.down do
+          execute &lt;&lt;-SQL
+            ALTER TABLE distributors
+              DROP CONSTRAINT zipchk
+          SQL
+        end
+      end
+
+      # The rest of the migration was ok
+    end
+  end
+end
+
+</pre>
+</div>
+<p><code>revert</code>를 사용하지 않은 마이그레이션을 똑같이 작성할 수도 있지만
+<code>create_table</code>, <code>reversible</code>을 되돌리는 단계를 더 넣어야 한다.
+<code>create_table</code>을 <code>drop_table</code>로 바꾸고 <code>up</code>을 <code>down</code>으로 바꾼다.
+되돌리는 모든 단계를
+<code>revert</code>로 처리한다.</p><div class="note"><p>위와 같은 CHECK 제약 조건을 추가하려면
+<code>structure.sql</code>로 덤프 해야 한다.
+<a href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%EB%8D%A4%ED%94%84%EC%9D%98-%EC%9D%98%EB%AF%B8">스키마 덤프의 의미</a> 참조.</p></div><h3 id="마이그레이션-실행하기"><a class="anchorlink" href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">4 마이그레이션 실행하기</a></h3><p>레일스 bin/rails 태스크로 마이그레이션을 실행한다.</p><p>제일 처음 실행하는 bin/rails 태스크는
+<code>rails db:migrate</code>이다. 스키마를 처음 구성하기 위해 아직 실행하지 않은 마이그레이션의 <code>change</code>, <code>up</code> 메소드를 실행한다.
+이미 실행했다면,
+태스크를 마친다. 마이그레이션은 마이그레이션 파일 이름에 있는
+날짜 순서대로 실행한다.</p><p>다만, <code>db:migrate</code> 태스크는 <code>db:schema:dump</code> 태스크도 실행하여,
+<code>db/schema.rb</code> 파일을 데이터베이스 구성과 일치하도록 변경한다.</p><p>버전을 사용하면 액티브 레코드는 해당 버전까지 마이그레이션
+(change, up, down)을 실행한다.
+버전은 마이그레이션 파일 이름에서 숫자로 시작하는 부문이다.
+200080906120000 버전으로 마이그레이션 실행하려면 다음과 같다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails db:migrate VERSION=20080906120000
+
+</pre>
+</div>
+<p>20080906120000 버전이 현재 버전보다 크면
+(상위 버전으로 마이그레이션), 20080906120000을 포함한 모든 마이그레이션의 <code>change</code>(또는 <code>up</code>)
+메소드를 실행하고,
+20080906120000 보다 최신 버전 마이그레이션은 실행하지 않는다.
+하위 버전으로 마이그레이션하면, 20080906120000 버전까지
+마이그레이션의 <code>down</code> 메소드를 실행한다.</p><h4 id="롤백하기"><a class="anchorlink" href="#%EB%A1%A4%EB%B0%B1%ED%95%98%EA%B8%B0">4.1 롤백하기</a></h4><p>현재 마그레이션에서 한단계 뒤로 롤백하는데 자주 사용하는 태스크이다.
+실수한 것을 고치고 싶을 때. 이전 마이그레이션의 버전 번호를
+사용하지 않고 다음과 같이 실행한다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails db:rollback
+
+</pre>
+</div>
+<p><code>change</code> 메소드를 되돌리거나 <code>down</code> 메소드를 실행하여 한단계 뒤로 롤백한다.
+몇단계 더 뒤로 마이그레이션을 되돌아 가려면,
+<code>STEP</code> 파라미터를 사용할 수 있다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails db:rollback STEP=3
+
+</pre>
+</div>
+<p>마이그레이션을 3단계 뒤로 되돌린다.</p><p><code>db:migrate:redo</code> 태스크는 롤백하여 마이그레이션을 다시 실행한다.
+<code>db:rollback</code> 태스크와 같이 <code>SETP</code> 파라미터를 사용하여 한단계 이상 뒤로 되돌아갔다가
+마이그레이션을 다시 실행하려면 다음과 같다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails db:migrate:redo STEP=3
+
+</pre>
+</div>
+<p><code>db:rollback</code>과 <code>db:migrate:redo</code> 태스크는 <code>db:migrate</code>으로도 할 수 있다.
+단지 마이그레이션 버전을 사용하지 않고
+간단히 실행할 수 있게 해준다.</p><h4 id="데이터베이스-셋업하기"><a class="anchorlink" href="#%EB%8D%B0%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EC%85%8B%EC%97%85%ED%95%98%EA%B8%B0">4.2 데이터베이스 셋업하기</a></h4><p><code>rails db:setup</code> 태스크는 테이베이스를 만들고 스키마를 불러온 다음
+시드 데이터로 초기화한다.</p><h4 id="테이터베이스-리셋하기"><a class="anchorlink" href="#%ED%85%8C%EC%9D%B4%ED%84%B0%EB%B2%A0%EC%9D%B4%EC%8A%A4-%EB%A6%AC%EC%85%8B%ED%95%98%EA%B8%B0">4.3 테이터베이스 리셋하기</a></h4><p><code>rails db:reset</code> 태스크는 테이터베이스를 삭제하고 다시 셋업한다.
+<code>rails db:drop db:setup</code>를 실행하는 것과 같다.</p><div class="note"><p>모든 마이그레이션을 실행하지 않는다.
+현재 버전의 <code>db/schema.rb</code> 또는 <code>db/structure.sql</code> 파일을 사용한다. 마이그레이션을 롤백할 수 없으면
+<code>rails db:reset</code>은 도움이 안된다. 스키마를 덤프하는 내용은
+<a href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%EB%8D%A4%ED%94%84%EC%9D%98-%EC%9D%98%EB%AF%B8">스키마 덤프의 의미</a> 섹션을 참조한다.</p></div><h4 id="마이그레이션-버전을-찍어서-실행하기"><a class="anchorlink" href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EB%B2%84%EC%A0%84%EC%9D%84-%EC%B0%8D%EC%96%B4%EC%84%9C-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">4.4 마이그레이션 버전을 찍어서 실행하기</a></h4><p>마이그레이션 버전을 찍어서 up 또는 down 메소드를 실행하려고 할 때, <code>db:migrate:up</code>과
+<code>db:migrate:down</code> 태스크를 실행한다.
+해당 버전과 마이그레이션의 <code>change</code>, <code>up</code>, <code>down</code> 메소드 중 하나를 선택하여
+실행하려면 다음과 같다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails db:migrate:up VERSION=20080906120000
+
+</pre>
+</div>
+<p>20080906120000 버전 마이그레이션의 <code>change</code>
+(또는 <code>up</code>) 메소드를 실행한다. 태스크는
+마이그레이션을 이미 실행하였는지 확인한 다음
+액티브 레코드가 이미 실행하였다고 판단하면 마이그레이션 작업을 하지 않는다.</p><h4 id="다른-환경에서-마이그레이션-실행하기"><a class="anchorlink" href="#%EB%8B%A4%EB%A5%B8-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">4.5 다른 환경에서 마이그레이션 실행하기</a></h4><p>환경변수를 설정하지 않고 <code>bin/rails db:migrate</code>를 실행하면 <code>development</code> 환경에서 실행한다.
+다른 환경에서 마이그레이션을 실행하려면
+<code>RAILS_ENV</code> 환경변수를 사용한다.
+<code>test</code> 환경에서 마이그레이션 실행하려면 다음과 같다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+$ bin/rails db:migrate RAILS_ENV=test
+
+</pre>
+</div>
+<h4 id="마이그레이션-실행-결과-출력-메시지를-수정하기"><a class="anchorlink" href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EC%8B%A4%ED%96%89-%EA%B2%B0%EA%B3%BC-%EC%B6%9C%EB%A0%A5-%EB%A9%94%EC%8B%9C%EC%A7%80%EB%A5%BC-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0">4.6 마이그레이션 실행 결과 출력 메시지를 수정하기</a></h4><p>마이그레이션은 실행 내용과 실행 시간을 출력한다.
+테이블을 만들고 인덱스를 추가하는 마이그레이션 결과는 다음과 같다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+==  CreateProducts: migrating =================================================
+-- create_table(:products)
+   -&gt; 0.0028s
+==  CreateProducts: migrated (0.0028s) ========================================
+
+</pre>
+</div>
+<p>마이그레이션 실행 결과 출력 메시지를 수정하는데 사용할 수 있는 메소드는 다음과 같다:</p>
+<table>
+<thead>
+<tr>
+<th>메소드</th>
+<th>목적</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>suppress_messages</td>
+<td>출력하지 않을 내용을 블록으로 아규먼트 전달한다.</td>
+</tr>
+<tr>
+<td>say</td>
+<td>출력할 내용을 아규먼트로 전달한다. 두번째 아규먼트(true/false)는 들여쓰기 사용 여부이다.</td>
+</tr>
+<tr>
+<td>say_with_time</td>
+<td>아규먼트로 전달하는 블록을 실행하는데 걸린 시간을 출력한다. 블록의 리턴 값은 블록이 처리한 열(row) 개수라고 본다.</td>
+</tr>
+</tbody>
+</table>
+<p>메소드는 다음과 같이 사용한다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class CreateProducts &lt; ActiveRecord::Migration[5.0]
+  def change
+    suppress_messages do
+      create_table :products do |t|
+        t.string :name
+        t.text :description
+        t.timestamps
+      end
+    end
+
+    say "Created a table"
+
+    suppress_messages {add_index :products, :name}
+    say "and an index!", true
+
+    say_with_time 'Waiting for a while' do
+      sleep 10
+      250
+    end
+  end
+end
+
+</pre>
+</div>
+<p>실행하면 다음과 같이 출력한다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+==  CreateProducts: migrating =================================================
+-- Created a table
+   -&gt; and an index!
+-- Waiting for a while
+   -&gt; 10.0013s
+   -&gt; 250 rows
+==  CreateProducts: migrated (10.0054s) =======================================
+
+</pre>
+</div>
+<p>액티브 레코드 마이그레이션 결과 메시지를 출력하지 않으려면, <code>rails db:migrate
+VERBOSE=false</code>를 실행한다.</p><h3 id="기존-마이그레이션-변경하기"><a class="anchorlink" href="#%EA%B8%B0%EC%A1%B4-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98-%EB%B3%80%EA%B2%BD%ED%95%98%EA%B8%B0">5 기존 마이그레이션 변경하기</a></h3><p>마이그레이션을 작성하며 때때로 실수할 수 있다.
+마이그레이션을 이미 실행하였다면, 마이그레이션 파일을 편집하여 재실행할 수 없다.
+레일스가 이미 마이그레이션을 실행했다고 판단하면
+<code>rails db:migrate</code> 실행하여도 마이그레이션을 실행하지 않는다.
+반드시 마이그레이션을 롤백(<code>bin/rails db:rollback</code>)한 다음
+마이그레이션 파일을 편집하고 <code>rails db:migrate</code>를 실행하여야 한다.</p><p>기존 마이그레이션 파일을 편집하지 않는 편이 좋다.
+실 서버에서 기존 마이그레이션을 실행한 경우,
+기존 마이그레이션 파일을 추가로 작업한 결과는 문제를 일으킬 수 있다.
+기존 파일을 편집하지 말고, 작업할 내용을 새 마이그레이션 파일로 작성해야 한다.
+마이그레이션 파일을 새로 만들면 소스 저장소와
+개발용 컴퓨터에도 영향을 주지 않아서 새로 만들어 편집하는 것이
+상대적으로 덜 위험하다.</p><p><code>revert</code> 메소드는 이전 마이그레이션을 전체 또는 일부분을 되돌리는
+마이그레이션을 새로 작성하는데 유용하다.
+<a href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98%EC%9D%84-%EC%9D%B4%EC%A0%84-%EC%83%81%ED%83%9C%EB%A1%9C-%EB%90%98%EB%8F%8C%EB%A6%AC%EA%B8%B0">마이그레이션을 이전 상태로 되돌리기</a> 참조</p><h3 id="스키마-덤프의-의미"><a class="anchorlink" href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%EB%8D%A4%ED%94%84%EC%9D%98-%EC%9D%98%EB%AF%B8">6 스키마 덤프의 의미</a></h3><h4 id="스키마-파일의-목적은-questionmark"><a class="anchorlink" href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%ED%8C%8C%EC%9D%BC%EC%9D%98-%EB%AA%A9%EC%A0%81%EC%9D%80-questionmark">6.1 스키마 파일의 목적은?</a></h4><p>마이그레이션은 강력하지만, 데이터베이스 스키마를 결정하지 않는다.
+스키마를 결정하는 역할은 <code>db/schema.rb</code>와 액티브 레코드가 만든 SQL 파일로 나누어져 있다.
+두 파일은 편집하여 사용할 목적이 아니라,
+테이터베이스의 현재 상태를 나타나는데 있다.</p><p>앱을 새로 배포할 때 마이그레이션 전체를 실행할 필요는 없다.
+현재 스키마를 데이터베이스로 불러오는 편이
+훨씬 쉽고 빠르다.</p><p>테스트 데이터베이스를 만들 때, 현재 개발하는 데이터베이스를
+덤프(<code>db/schema.rb</code> 또는 <code>db/structure.sql</code>)하여
+테스트 데이터베이스로 불러온다.</p><p>스키마 파일은 액티브 레코드 객체가 어떤 속성을 가지고 있는지 훑어볼 때 편하다.
+속성에 관한 정보는 모델 코드에는 없고,
+마이그레이션 파일 여러개에 걸쳐 있지만,
+스키마 파일에 모두 정리되어 있다.
+<a href="https://github.com/ctran/annotate_models">annotate_models</a>  젬은 모델 파일 맨 윗부분에
+모델 속성 정보를 요약하여
+코멘트로 달아준다.</p><h4 id="스키마-덤프-유형"><a class="anchorlink" href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%EB%8D%A4%ED%94%84-%EC%9C%A0%ED%98%95">6.2 스키마 덤프 유형</a></h4><p>스키마를 덤프하는 방법은 두가지다. <code>config/application.rb</code> 파일에서
+<code>config.active_record.schema_format</code>을 <code>:sql</code>
+또는 <code>:ruby</code>로 설정한다.</p><p><code>:ruby</code>로 설정하면, 스키마를 <code>db/schema.rb</code> 파일에 저장한다.
+이 파일을 열면, 마이그레이션 파일 길이가
+매우 길어서 놀랄 것이다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+ActiveRecord::Schema.define(version: 20080906171750) do
+  create_table "authors", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "products", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "part_number"
+  end
+end
+
+</pre>
+</div>
+<p>여러가지 면에서 <code>db/schema.rb</code> 파일을 만든 것이 적절하다.
+테이터베이스를 분석하고 <code>create_table</code>과 <code>add_index</code> 등으로 데이터베이스 구조를 나타내는 <code>db/schema.rb</code>를 만들었다.
+이 파일은 데이터베이스와 분리하였기 때문에,
+액티브 레코드를 지원하는 다른 데이터베이스에서도 이 파일을 불러올 수 있다.
+테이터베이스를 여러 개 사용하는 애플리케이션을 배포할 때 유용하다.</p><div class="note"><p><code>db/schema.rb</code> 파일은 트리거,
+시퀀스, 저장 프로시저, 제약조건과 같은 데이터베이스 고유 기능을 나타내지 못한다.
+마이그레이션 파일에서는 이와 같은 고유 기능을 SQL문으로 실행할 수 있지만,
+스키마를 덤프할 때는 고유 기능을 SQL문으로 재현하지 못한다.
+고유 기능을 사용하려면, 스키마 포맷을 <code>:sql</code>로 설정하라.</p></div><p>액티브 레코드의 스키마 덤퍼(<code>db:structure:dump</code>)를 쓰지 않고,
+데이터베이스 관리 툴로 데이터베이스 구조를 <code>db/structure.sql</code> 파일로 덤프할 수 있다.
+PostgreSQL을 사용하면 <code>pg_dump</code>
+유틸리티를 사용한다. MySQL과 MariaDB를 사용하면, 여러 테이블에 대한
+<code>SHOW CREATE TABLE</code> 실행 결과를 <code>db/structure.sql</code> 파일에 넣는다.</p><p>스키마를 불러오는 것은 단지 SQL문을 실행하는 문제이다.
+스키마에서 정의한대로, 테이터베이스의 구조를 똑같이 복제하여 만든다.
+그러나 <code>:sql</code> 스키마 포맷을 사용하면
+다른 RDBMS로 스키마를 불러오지 못한다.</p><h4 id="스키마-덤프와-소스-버전-관리"><a class="anchorlink" href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%EB%8D%A4%ED%94%84%EC%99%80-%EC%86%8C%EC%8A%A4-%EB%B2%84%EC%A0%84-%EA%B4%80%EB%A6%AC">6.3 스키마 덤프와 소스 버전 관리</a></h4><p>스키마 덤프는 데이터베이스 스키마를 결정하는 근거이기 때문에,
+소스 버전 관리툴로 스키마 파일을 관리하기를 강력히 추천한다.</p><p><code>db/schema.rb</code>는 테이터베이스의 현재 버전 번호를 가지고 있다.
+버전 번호는 스키마를 수정한 브랜치들을 머지할 때 충돌이 발생하도록 한다.
+충돌이 발생하면, 두 버전 중에 높은 버전에 맞추어
+충돌을 해결한다.</p><h3 id="액티브-레코드와-참조-무결성"><a class="anchorlink" href="#%EC%95%A1%ED%8B%B0%EB%B8%8C-%EB%A0%88%EC%BD%94%EB%93%9C%EC%99%80-%EC%B0%B8%EC%A1%B0-%EB%AC%B4%EA%B2%B0%EC%84%B1">7 액티브 레코드와 참조 무결성</a></h3><p>액티브 레코드 방식은 테이터베이스보다 모델이 판단하고 처리해야 한다고 주장한다.
+데이터베이스가 판다하여 처리하는
+트리거와 제약조건과 같이 기능은
+거의 사용하지 않는다.</p><p><code>validates :foreign_key, uniqueness: true</code>과 같은 밸리데이션을
+사용하면 데이터 무결성을 지킬 수 있다. 관계 설정시 <code>:dependent</code> 옵션을
+사용하면 부모 객체를 삭제할 때
+자녀 객체도 삭제할 수 있다. 애플리케이션이 처리할 일들은
+참조 무결성이 깨질 수 있어서 누군가는 참조 무결성이 깨지지 않도록
+데이터베이스의 <a href="#%EC%99%B8%EB%9E%98-%ED%82%A4">외래 키 제약조건</a>을 사용한다.</p><p>액티브 레코드는 참조 무결성을 지키기 위한 툴을 모두 제공하지 않지만,
+SQL문을 실행하는 <code>execute</code> 메소드를 사용할 수 있다.</p><h3 id="마이그레이션과-시드-데이터"><a class="anchorlink" href="#%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98%EA%B3%BC-%EC%8B%9C%EB%93%9C-%EB%8D%B0%EC%9D%B4%ED%84%B0">8 마이그레이션과 시드 데이터</a></h3><p>레일스 마이그레이션 기능의 중요한 목적은 스키마를
+수정하는 명령어를 실행하여 마이그레이션 과정을 일관되지 유지하는 것이다.
+마이그레이션은 데이터를 추가하거나 수정하는데 사용할 수 있다.
+기존 데이터베이스를 갈아 엎어버리거나 처음부터 다시 만들 수 없는 실서버 데이터베이스에서 마이그레이션할 때 유용하다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class AddInitialProducts &lt; ActiveRecord::Migration[5.0]
+  def up
+    5.times do |i|
+      Product.create(name: "Product ##{i}", description: "A product.")
+    end
+  end
+
+  def down
+    Product.delete_all
+  end
+end
+
+</pre>
+</div>
+<p>데이터베이스를 처음 만든 직후 초기 데이터를 추가할 때,
+레일스는 '시드' 기능을 가지고 있어서 초기화하는데 빠르고 쉽다.
+개발 및 테스트 환경처럼 테이터베이스를 자주 다시 불러올 때 유용하다.
+초기 데이터를 불어오는 쉬운 방법으로 <code>db/seeds.rb</code> 파일 내용을
+루비 코드로 작성하고 <code>rails db:seed</code>를 실행한다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+5.times do |i|
+  Product.create(name: "Product ##{i}", description: "A product.")
+end
+
+</pre>
+</div>
+<p>애플리케이션 테이터베이스가 비어있어서 초기화할 때 마이그레이션보다
+깔끔한 방법이다.</p>
+
+        <h3>피드백</h3>
+        <p>
+          여러분의 참여가 가이드 수준을 높입니다.
+        </p>
+        <p>
+          오자와 탈자 또는 확인할 수 있는 에러를 발견하면 기여해보기를 바랍니다.
+          기여하기 전에, <a href="http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#contributing-to-the-rails-documentation">문서 기여 방법</a> 부분을 읽기 바랍니다.
+        </p>
+        <p>
+          내용이 부족하거나 최신 글이 아닐 수도 있습니다.
+          마스터 브랜치에 빠진 문서를 넣어주기를 바랍니다. 먼저
+          <a href="http://edgeguides.rubyonrails.org">엣지 가이드</a>에서
+          해당 이슈를 이미 수정하여 마스터 브랜치에 반영하였는지 확인하기 바랍니다.
+          Check the <a href="ruby_on_rails_guides_guidelines.html">루비 온 레일스 가이드 지침</a>에서
+          스타일과 관례를 확인합니다.
+        </p>
+        <p>
+          고쳐야 할 것을 찾았으나 직접 수정할 수 없다면,
+          <a href="https://github.com/rails/rails/issues">이슈로 올리기</a> 바랍니다.
+        </p>
+        <p>그리고 마지막으로, 루비 온 레일스 문서에 대한 어떤 토론이라도
+          <a href="https://groups.google.com/forum/#!forum/rubyonrails-docs">rubyonrails-docs 메일링 리스트</a>에서 환영합니다.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hide" />
+  <div id="footer">
+    <div class="wrapper">
+      <p>이 저작물은 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ko">크리에이티브 커먼즈 동일조건변경허락 4.0 국제</a> 라이선스를 따릅니다.</p>
+<p>"Rails" 와 "Ruby on Rails" 와 레일스 로고 저작권은 데이비드 하이네마이어 한슨에게 있습니다.</p>
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/responsive-tables.js"></script>
+  <script type="text/javascript" src="javascripts/guides.js"></script>
+  <script type="text/javascript" src="javascripts/syntaxhighlighter.js"></script>
+  <script type="text/javascript">
+    syntaxhighlighterConfig = {
+      autoLinks: false,
+    };
+    $(guidesIndex.bind);
+  </script>
+</body>
+</html>

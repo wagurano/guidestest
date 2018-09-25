@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>액션케이블 시작하기 — Ruby on Rails Guides</title>
+<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+<link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+<link rel="stylesheet" type="text/css" href="stylesheets/syntaxhighlighter/shCore.css" />
+<link rel="stylesheet" type="text/css" href="stylesheets/syntaxhighlighter/shThemeRailsGuides.css" />
+
+<link rel="stylesheet" type="text/css" href="stylesheets/fixes.css" />
+
+<link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
+<body class="guide">
+  <div>
+    <img src="images/edge_badge.png" alt="edge-badge" id="edge-badge" />
+  </div>
+  <div id="topNav">
+    <div class="wrapper">
+      <strong class="more-info-label">더보기 <a href="http://rubyonrails.org/">rubyonrails.org:</a> </strong>
+      <span class="red-button more-info-button">
+        루비 온 레일스
+      </span>
+      <ul class="more-info-links s-hidden">
+        <li class="more-info"><a href="http://weblog.rubyonrails.org/">블로그</a></li>
+        <li class="more-info"><a href="http://guides.rubyonrails.org/">가이드(영어)</a></li>
+        <li class="more-info"><a href="http://api.rubyonrails.org/">API</a></li>
+        <li class="more-info"><a href="https://stackoverflow.com/questions/tagged/ruby-on-rails">물어보기</a></li>
+        <li class="more-info"><a href="https://github.com/rails/rails">레일스 저장소</a></li>
+        <li class="more-info"><a href="https://github.com/rorlakr/rails-guides">번역 저장소</a></li>
+        <li class="more-info"><a href="http://rorlab.org">RORLAB</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="header">
+    <div class="wrapper clearfix">
+      <h1><a href="index.html" title="홈페이지로 돌아가기">Guides.rubyonrails.org</a></h1>
+      <ul class="nav">
+        <li><a class="nav-item" href="index.html">홈</a></li>
+        <li class="guides-index guides-index-large">
+          <a href="index.html" id="guidesMenu" class="guides-index-item nav-item">가이드 목차</a>
+          <div id="guides" class="clearfix" style="display: none;">
+            <hr />
+              <dl class="L">
+                <dt>시작하기 전에</dt>
+                <dd><a href="getting_started.html">레일스 시작하기</a></dd>
+                <dt>모델</dt>
+                <dd><a href="active_record_basics.html">액티브 레코드 기본</a></dd>
+                <dd><a href="active_record_migrations.html">액티브 레코드 마이그레이션</a></dd>
+                <dd><a href="active_record_validations.html">액티브 레코드 밸리데이션</a></dd>
+                <dd><a href="active_record_callbacks.html">액티브 레코드 콜백</a></dd>
+                <dd><a href="association_basics.html">액티브 레코드 관계</a></dd>
+                <dd><a href="active_record_querying.html">액티브 레코드 검색 인터페이스</a></dd>
+                <dt>뷰</dt>
+                <dd><a href="layouts_and_rendering.html">레일스의 레이아웃과 렌더링</a></dd>
+                <dd><a href="form_helpers.html">액션 뷰 폼 헬퍼</a></dd>
+                <dt>콘트롤러</dt>
+                <dd><a href="action_controller_overview.html">액션 콘트롤러 개요</a></dd>
+                <dd><a href="routing.html">레일스 라우팅</a></dd>
+              </dl>
+              <dl class="R">
+                <dt>심화 내용</dt>
+                <dd><a href="active_support_core_extensions.html">액티브 서포트 코어 확장</a></dd>
+                <dd><a href="i18n.html">레일스 다국어 API</a></dd>
+                <dd><a href="action_mailer_basics.html">액션 메일러 기본</a></dd>
+                <dd><a href="active_job_basics.html">액티브 잡 기본</a></dd>
+                <dd><a href="active_storage_overview.html">액티브 스토리지 개요</a></dd>
+                <dd><a href="testing.html">레일스 애플리케이션 테스트</a></dd>
+                <dd><a href="security.html">레일스 애플리케이션 보안</a></dd>
+                <dd><a href="debugging_rails_applications.html">레일스 애플리케이션 디버깅</a></dd>
+                <dd><a href="configuring.html">레일스 애플리케이션 설정</a></dd>
+                <dd><a href="command_line.html">레일스 콘솔 명령어</a></dd>
+                <dd><a href="asset_pipeline.html">애셋 파이프라인</a></dd>
+                <dd><a href="working_with_javascript_in_rails.html">레일스에서 자바스크립트 사용하는 방법</a></dd>
+                <dd><a href="autoloading_and_reloading_constants.html">상수를 자동으로 가져오고 다시 불러오는 기능</a></dd>
+                <dd><a href="caching_with_rails.html">레일스로 캐싱하기: 개요</a></dd>
+                <dd><a href="api_app.html">API만 사용하는 레일스 애플리케이션</a></dd>
+                <dd><a href="action_cable_overview.html">액션 케이블 소개</a></dd>
+                <dt>레일스 확장하기</dt>
+                <dd><a href="rails_on_rack.html">레일스 온 랙</a></dd>
+                <dd><a href="generators.html">레일스 제너레이터 만드는 방법</a></dd>
+                <dt>루비 온 레일스에 기여하는 방법</dt>
+                <dd><a href="contributing_to_ruby_on_rails.html">루비 온 레일스에 기여하는 방법</a></dd>
+                <dd><a href="api_documentation_guidelines.html">API 문서 작성 지침</a></dd>
+                <dd><a href="ruby_on_rails_guides_guidelines.html">루비 온 레일스 가이드 지침</a></dd>
+                <dt>유지관리 정책</dt>
+                <dd><a href="maintenance_policy.html">유지관리 정책</a></dd>
+                <dt>릴리스 노트</dt>
+                <dd><a href="upgrading_ruby_on_rails.html">루비 온 레일스 업그레이드 가이드</a></dd>
+                <dd><a href="5_2_release_notes.html">루비 온 레일스 5.2 릴리스 노트</a></dd>
+                <dd><a href="5_1_release_notes.html">루비 온 레일스 5.1 릴리스 노트</a></dd>
+                <dd><a href="5_0_release_notes.html">루비 온 레일스 5.0 릴리스 노트</a></dd>
+                <dd><a href="4_2_release_notes.html">루비 온 레일스 4.2 릴리스 노트</a></dd>
+                <dd><a href="4_1_release_notes.html">루비 온 레일스 4.1 릴리스 노트</a></dd>
+                <dd><a href="4_0_release_notes.html">루비 온 레일스 4.0 릴리스 노트</a></dd>
+                <dd><a href="3_2_release_notes.html">루비 온 레일스 3.2 릴리스 노트</a></dd>
+                <dd><a href="3_1_release_notes.html">Ruby on Rails 3.1 Release Notes</a></dd>
+                <dd><a href="3_0_release_notes.html">루비 온 레일스 3.0 릴리스 노트</a></dd>
+                <dd><a href="2_3_release_notes.html">루비 온 레일스 2.3 릴리스 노트</a></dd>
+                <dd><a href="2_2_release_notes.html">루비 온 레일스 2.2 릴리스 노트</a></dd>
+                <dt>시작하기 전에</dt>
+                <dd><a href="getting_started.html">레일스 시작하기</a></dd>
+                <dt>모델</dt>
+                <dd><a href="active_record_basics.html">액티브 레코드 기본</a></dd>
+                <dd><a href="active_record_migrations.html">액티브 레코드 마이그레이션</a></dd>
+                <dd><a href="active_record_validations.html">액티브 레코드 밸리데이션</a></dd>
+                <dd><a href="active_record_callbacks.html">Active Record Callbacks</a></dd>
+                <dd><a href="association_basics.html">Active Record Associations</a></dd>
+                <dd><a href="active_record_querying.html">Active Record Query Interface</a></dd>
+                <dt>Views</dt>
+                <dd><a href="layouts_and_rendering.html">Layouts and Rendering in Rails</a></dd>
+                <dd><a href="form_helpers.html">Action View Form Helpers</a></dd>
+                <dt>Controllers</dt>
+                <dd><a href="action_controller_overview.html">Action Controller Overview</a></dd>
+                <dd><a href="routing.html">Rails Routing from the Outside In</a></dd>
+                <dt>Digging Deeper</dt>
+                <dd><a href="active_support_core_extensions.html">Active Support Core Extensions</a></dd>
+                <dd><a href="i18n.html">Rails Internationalization (I18n) API</a></dd>
+                <dd><a href="action_mailer_basics.html">Action Mailer Basics</a></dd>
+                <dd><a href="active_job_basics.html">Active Job Basics</a></dd>
+                <dd><a href="active_storage_overview.html">Active Storage Overview</a></dd>
+                <dd><a href="testing.html">Testing Rails Applications</a></dd>
+                <dd><a href="security.html">Securing Rails Applications</a></dd>
+                <dd><a href="debugging_rails_applications.html">Debugging Rails Applications</a></dd>
+                <dd><a href="configuring.html">Configuring Rails Applications</a></dd>
+                <dd><a href="command_line.html">The Rails Command Line</a></dd>
+                <dd><a href="asset_pipeline.html">The Asset Pipeline</a></dd>
+                <dd><a href="working_with_javascript_in_rails.html">Working with JavaScript in Rails</a></dd>
+                <dd><a href="autoloading_and_reloading_constants.html">Autoloading and Reloading Constants</a></dd>
+                <dd><a href="caching_with_rails.html">Caching with Rails: An Overview</a></dd>
+                <dd><a href="api_app.html">Using Rails for API-only Applications</a></dd>
+                <dd><a href="action_cable_overview.html">Action Cable Overview</a></dd>
+                <dt>Extending Rails</dt>
+                <dd><a href="rails_on_rack.html">Rails on Rack</a></dd>
+                <dd><a href="generators.html">Creating and Customizing Rails Generators &amp; Templates</a></dd>
+                <dt>Contributing to Ruby on Rails</dt>
+                <dd><a href="contributing_to_ruby_on_rails.html">Contributing to Ruby on Rails</a></dd>
+                <dd><a href="api_documentation_guidelines.html">API Documentation Guidelines</a></dd>
+                <dd><a href="ruby_on_rails_guides_guidelines.html">Ruby on Rails Guides Guidelines</a></dd>
+                <dt>Maintenance Policy</dt>
+                <dd><a href="maintenance_policy.html">Maintenance Policy for Ruby on Rails</a></dd>
+                <dt>Release Notes</dt>
+                <dd><a href="upgrading_ruby_on_rails.html">Upgrading Ruby on Rails</a></dd>
+                <dd><a href="5_2_release_notes.html">Ruby on Rails 5.2 Release Notes</a></dd>
+                <dd><a href="5_1_release_notes.html">Ruby on Rails 5.1 Release Notes</a></dd>
+                <dd><a href="5_0_release_notes.html">Ruby on Rails 5.0 Release Notes</a></dd>
+                <dd><a href="4_2_release_notes.html">Ruby on Rails 4.2 Release Notes</a></dd>
+                <dd><a href="4_1_release_notes.html">Ruby on Rails 4.1 Release Notes</a></dd>
+                <dd><a href="4_0_release_notes.html">Ruby on Rails 4.0 Release Notes</a></dd>
+                <dd><a href="3_2_release_notes.html">Ruby on Rails 3.2 Release Notes</a></dd>
+                <dd><a href="3_1_release_notes.html">Ruby on Rails 3.1 Release Notes</a></dd>
+                <dd><a href="3_0_release_notes.html">Ruby on Rails 3.0 Release Notes</a></dd>
+                <dd><a href="2_3_release_notes.html">Ruby on Rails 2.3 Release Notes</a></dd>
+                <dd><a href="2_2_release_notes.html">Ruby on Rails 2.2 Release Notes</a></dd>
+              </dl>
+          </div>
+        </li>
+        <li><a class="nav-item" href="contributing_to_ruby_on_rails.html">기여하기</a></li>
+        <li><a class="nav-item" href="credits.html">도와주신 분들</a></li>
+        <li class="guides-index guides-index-small">
+          <select class="guides-index-item nav-item">
+            <option value="index.html">가이드 목차</option>
+              <optgroup label="시작하기 전에">
+                  <option value="getting_started.html">레일스 시작하기</option>
+              </optgroup>
+              <optgroup label="모델">
+                  <option value="active_record_basics.html">액티브 레코드 기본</option>
+                  <option value="active_record_migrations.html">액티브 레코드 마이그레이션</option>
+                  <option value="active_record_validations.html">액티브 레코드 밸리데이션</option>
+                  <option value="active_record_callbacks.html">액티브 레코드 콜백</option>
+                  <option value="association_basics.html">액티브 레코드 관계</option>
+                  <option value="active_record_querying.html">액티브 레코드 검색 인터페이스</option>
+              </optgroup>
+              <optgroup label="뷰">
+                  <option value="layouts_and_rendering.html">레일스의 레이아웃과 렌더링</option>
+                  <option value="form_helpers.html">액션 뷰 폼 헬퍼</option>
+              </optgroup>
+              <optgroup label="콘트롤러">
+                  <option value="action_controller_overview.html">액션 콘트롤러 개요</option>
+                  <option value="routing.html">레일스 라우팅</option>
+              </optgroup>
+              <optgroup label="심화 내용">
+                  <option value="active_support_core_extensions.html">액티브 서포트 코어 확장</option>
+                  <option value="i18n.html">레일스 다국어 API</option>
+                  <option value="action_mailer_basics.html">액션 메일러 기본</option>
+                  <option value="active_job_basics.html">액티브 잡 기본</option>
+                  <option value="active_storage_overview.html">액티브 스토리지 개요</option>
+                  <option value="testing.html">레일스 애플리케이션 테스트</option>
+                  <option value="security.html">레일스 애플리케이션 보안</option>
+                  <option value="debugging_rails_applications.html">레일스 애플리케이션 디버깅</option>
+                  <option value="configuring.html">레일스 애플리케이션 설정</option>
+                  <option value="command_line.html">레일스 콘솔 명령어</option>
+                  <option value="asset_pipeline.html">애셋 파이프라인</option>
+                  <option value="working_with_javascript_in_rails.html">레일스에서 자바스크립트 사용하는 방법</option>
+                  <option value="autoloading_and_reloading_constants.html">상수를 자동으로 가져오고 다시 불러오는 기능</option>
+                  <option value="caching_with_rails.html">레일스로 캐싱하기: 개요</option>
+                  <option value="api_app.html">API만 사용하는 레일스 애플리케이션</option>
+                  <option value="action_cable_overview.html">액션 케이블 소개</option>
+              </optgroup>
+              <optgroup label="레일스 확장하기">
+                  <option value="rails_on_rack.html">레일스 온 랙</option>
+                  <option value="generators.html">레일스 제너레이터 만드는 방법</option>
+              </optgroup>
+              <optgroup label="루비 온 레일스에 기여하는 방법">
+                  <option value="contributing_to_ruby_on_rails.html">루비 온 레일스에 기여하는 방법</option>
+                  <option value="api_documentation_guidelines.html">API 문서 작성 지침</option>
+                  <option value="ruby_on_rails_guides_guidelines.html">루비 온 레일스 가이드 지침</option>
+              </optgroup>
+              <optgroup label="유지관리 정책">
+                  <option value="maintenance_policy.html">유지관리 정책</option>
+              </optgroup>
+              <optgroup label="릴리스 노트">
+                  <option value="upgrading_ruby_on_rails.html">루비 온 레일스 업그레이드 가이드</option>
+                  <option value="5_2_release_notes.html">루비 온 레일스 5.2 릴리스 노트</option>
+                  <option value="5_1_release_notes.html">루비 온 레일스 5.1 릴리스 노트</option>
+                  <option value="5_0_release_notes.html">루비 온 레일스 5.0 릴리스 노트</option>
+                  <option value="4_2_release_notes.html">루비 온 레일스 4.2 릴리스 노트</option>
+                  <option value="4_1_release_notes.html">루비 온 레일스 4.1 릴리스 노트</option>
+                  <option value="4_0_release_notes.html">루비 온 레일스 4.0 릴리스 노트</option>
+                  <option value="3_2_release_notes.html">루비 온 레일스 3.2 릴리스 노트</option>
+                  <option value="3_1_release_notes.html">Ruby on Rails 3.1 Release Notes</option>
+                  <option value="3_0_release_notes.html">루비 온 레일스 3.0 릴리스 노트</option>
+                  <option value="2_3_release_notes.html">루비 온 레일스 2.3 릴리스 노트</option>
+                  <option value="2_2_release_notes.html">루비 온 레일스 2.2 릴리스 노트</option>
+              </optgroup>
+              <optgroup label="시작하기 전에">
+                  <option value="getting_started.html">레일스 시작하기</option>
+              </optgroup>
+              <optgroup label="모델">
+                  <option value="active_record_basics.html">액티브 레코드 기본</option>
+                  <option value="active_record_migrations.html">액티브 레코드 마이그레이션</option>
+                  <option value="active_record_validations.html">액티브 레코드 밸리데이션</option>
+                  <option value="active_record_callbacks.html">Active Record Callbacks</option>
+                  <option value="association_basics.html">Active Record Associations</option>
+                  <option value="active_record_querying.html">Active Record Query Interface</option>
+              </optgroup>
+              <optgroup label="Views">
+                  <option value="layouts_and_rendering.html">Layouts and Rendering in Rails</option>
+                  <option value="form_helpers.html">Action View Form Helpers</option>
+              </optgroup>
+              <optgroup label="Controllers">
+                  <option value="action_controller_overview.html">Action Controller Overview</option>
+                  <option value="routing.html">Rails Routing from the Outside In</option>
+              </optgroup>
+              <optgroup label="Digging Deeper">
+                  <option value="active_support_core_extensions.html">Active Support Core Extensions</option>
+                  <option value="i18n.html">Rails Internationalization (I18n) API</option>
+                  <option value="action_mailer_basics.html">Action Mailer Basics</option>
+                  <option value="active_job_basics.html">Active Job Basics</option>
+                  <option value="active_storage_overview.html">Active Storage Overview</option>
+                  <option value="testing.html">Testing Rails Applications</option>
+                  <option value="security.html">Securing Rails Applications</option>
+                  <option value="debugging_rails_applications.html">Debugging Rails Applications</option>
+                  <option value="configuring.html">Configuring Rails Applications</option>
+                  <option value="command_line.html">The Rails Command Line</option>
+                  <option value="asset_pipeline.html">The Asset Pipeline</option>
+                  <option value="working_with_javascript_in_rails.html">Working with JavaScript in Rails</option>
+                  <option value="autoloading_and_reloading_constants.html">Autoloading and Reloading Constants</option>
+                  <option value="caching_with_rails.html">Caching with Rails: An Overview</option>
+                  <option value="api_app.html">Using Rails for API-only Applications</option>
+                  <option value="action_cable_overview.html">Action Cable Overview</option>
+              </optgroup>
+              <optgroup label="Extending Rails">
+                  <option value="rails_on_rack.html">Rails on Rack</option>
+                  <option value="generators.html">Creating and Customizing Rails Generators &amp; Templates</option>
+              </optgroup>
+              <optgroup label="Contributing to Ruby on Rails">
+                  <option value="contributing_to_ruby_on_rails.html">Contributing to Ruby on Rails</option>
+                  <option value="api_documentation_guidelines.html">API Documentation Guidelines</option>
+                  <option value="ruby_on_rails_guides_guidelines.html">Ruby on Rails Guides Guidelines</option>
+              </optgroup>
+              <optgroup label="Maintenance Policy">
+                  <option value="maintenance_policy.html">Maintenance Policy for Ruby on Rails</option>
+              </optgroup>
+              <optgroup label="Release Notes">
+                  <option value="upgrading_ruby_on_rails.html">Upgrading Ruby on Rails</option>
+                  <option value="5_2_release_notes.html">Ruby on Rails 5.2 Release Notes</option>
+                  <option value="5_1_release_notes.html">Ruby on Rails 5.1 Release Notes</option>
+                  <option value="5_0_release_notes.html">Ruby on Rails 5.0 Release Notes</option>
+                  <option value="4_2_release_notes.html">Ruby on Rails 4.2 Release Notes</option>
+                  <option value="4_1_release_notes.html">Ruby on Rails 4.1 Release Notes</option>
+                  <option value="4_0_release_notes.html">Ruby on Rails 4.0 Release Notes</option>
+                  <option value="3_2_release_notes.html">Ruby on Rails 3.2 Release Notes</option>
+                  <option value="3_1_release_notes.html">Ruby on Rails 3.1 Release Notes</option>
+                  <option value="3_0_release_notes.html">Ruby on Rails 3.0 Release Notes</option>
+                  <option value="2_3_release_notes.html">Ruby on Rails 2.3 Release Notes</option>
+                  <option value="2_2_release_notes.html">Ruby on Rails 2.2 Release Notes</option>
+              </optgroup>
+          </select>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <hr class="hide" />
+
+  <div id="feature">
+    <div class="wrapper">
+      <h2>액션케이블 시작하기</h2><p>이 가이드에서는 액션케이블의 구조와 웹소켓을 레일스 애플리케이션에 도입하여
+실시간 기능을 구현하는 방법에 관해서 설명합니다.</p><p>이 가이드의 내용:</p>
+<ul>
+<li>액션케이블 개요, 백엔드와 프론트엔드 통합하기</li>
+<li>액션케이블 설정하기</li>
+<li>채널 설정하기</li>
+<li>액션케이블을 위한 배포 방법과 아키텍처 구성하기</li>
+</ul>
+
+
+                <div id="subCol">
+            <h3 class="chapter"><img src="images/chapters_icon.gif" alt="" />Chapters</h3>
+            <ol class="chapters">
+<li><a href="#%EB%93%A4%EC%96%B4%EA%B0%80%EB%A9%B0">들어가며</a></li>
+<li><a href="#pub-sub%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC">Pub/Sub에 대하여</a></li>
+<li>
+<a href="#%EC%84%9C%EB%B2%84%EC%B8%A1-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8">서버측 컴포넌트</a>
+
+<ul>
+<li><a href="#%EC%84%9C%EB%B2%84%EC%B8%A1-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%BB%A4%EB%84%A5%EC%85%98">커넥션</a></li>
+<li><a href="#%EC%B1%84%EB%84%90">채널</a></li>
+</ul>
+</li>
+<li>
+<a href="#%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%B8%A1-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8">클라이언트측 컴포넌트</a>
+
+<ul>
+<li><a href="#%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%B8%A1-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%BB%A4%EB%84%A5%EC%85%98">커넥션</a></li>
+</ul>
+</li>
+<li>
+<a href="#%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%9C%EB%B2%84%EA%B0%84-%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9">클라이언트-서버간 상호작용</a>
+
+<ul>
+<li><a href="#%EC%8A%A4%ED%8A%B8%EB%A6%BC">스트림</a></li>
+<li><a href="#%EB%B8%8C%EB%A1%9C%EB%93%9C%EC%BA%90%EC%8A%A4%ED%8C%85">브로드캐스팅</a></li>
+<li><a href="#%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%9C%EB%B2%84%EA%B0%84-%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9-%EA%B5%AC%EB%8F%85">구독</a></li>
+<li><a href="#%EC%B1%84%EB%84%90%EC%97%90-%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98-%EB%84%98%EA%B8%B0%EA%B8%B0">채널에 매개변수 넘기기</a></li>
+<li><a href="#%EB%A9%94%EC%8B%9C%EC%A7%80%EB%A5%BC-%EC%9E%AC%EC%A0%84%EC%86%A1%ED%95%98%EA%B8%B0">메시지를 재전송하기</a></li>
+</ul>
+</li>
+<li>
+<a href="#%ED%92%80-%EC%8A%A4%ED%83%9D-%EC%98%88%EC%A0%9C">풀 스택 예제</a>
+
+<ul>
+<li><a href="#%EC%98%88%EC%A0%9C-1-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%91%EC%86%8D%EC%9D%84-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0">예제 1: 사용자 접속을 표시하기</a></li>
+<li><a href="#%EC%98%88%EC%A0%9C-2-%EC%83%88%EB%A1%9C%EC%9A%B4-%EC%95%8C%EB%A6%BC%EC%9D%84-%EC%88%98%EC%8B%A0%ED%95%98%EA%B8%B0">예제 2: 새로운 알림을 수신하기</a></li>
+<li><a href="#%EB%8D%94-%EC%9E%90%EC%84%B8%ED%95%9C-%EC%98%88%EC%8B%9C">더 자세한 예시</a></li>
+</ul>
+</li>
+<li>
+<a href="#%EC%84%A4%EC%A0%95">설정</a>
+
+<ul>
+<li><a href="#%EA%B5%AC%EB%8F%85-%EC%96%B4%EB%8C%91%ED%84%B0">구독 어댑터</a></li>
+<li><a href="#%ED%97%88%EA%B0%80%EB%90%9C-%EC%9A%94%EC%B2%AD-%ED%98%B8%EC%8A%A4%ED%8A%B8">허가된 요청 호스트</a></li>
+<li><a href="#%EC%86%8C%EB%B9%84%EC%9E%90-%EC%84%A4%EC%A0%95">소비자 설정</a></li>
+<li><a href="#%EA%B8%B0%ED%83%80-%EC%84%A4%EC%A0%95">기타 설정</a></li>
+</ul>
+</li>
+<li>
+<a href="#%EB%8F%85%EB%A6%BD-%EC%BC%80%EC%9D%B4%EB%B8%94-%EC%84%9C%EB%B2%84-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">독립 케이블 서버 실행하기</a>
+
+<ul>
+<li><a href="#%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%EC%97%90%EC%84%9C-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">애플리케이션에서 실행하기</a></li>
+<li><a href="#%EB%8F%85%EB%A6%BD%EB%90%9C-%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">독립된 서버에서 실행하기</a></li>
+<li><a href="#%EB%A9%94%EB%AA%A8">메모</a></li>
+</ul>
+</li>
+<li><a href="#%EC%9D%98%EC%A1%B4%EC%84%B1">의존성</a></li>
+<li><a href="#%EB%B0%B0%ED%8F%AC">배포</a></li>
+</ol>
+
+          </div>
+
+    </div>
+  </div>
+
+  <div id="container">
+    <div class="wrapper">
+      <div id="mainCol">
+        <h3 id="들어가며"><a class="anchorlink" href="#%EB%93%A4%EC%96%B4%EA%B0%80%EB%A9%B0">1 들어가며</a></h3><p>액션케이블은 <a href="https://en.wikipedia.org/wiki/WebSocket">웹소켓</a>
+과 레일스의 다른 부분을 매끄럽게 통합합니다. 액션케이블을 통해
+일반 레일스 애플리케이션과 같은 형태와 스타일로 효율성과 확장성을
+계속해서 보장하는 동시에 실시간 기능을 루비로 구현할 수 있습니다.
+이는 클라이언트의 자바스크립트 프레임워크와 서버의 루비 프레임워크를
+동시에 제공하는풀스택 프레임워크입니다. 그러므로 액티브레코드 등의
+선택하고자 하는 ORM으로 작성된 모든 도메인 모델에 접근할 수
+있습니다.</p><h3 id="pub-sub에-대하여"><a class="anchorlink" href="#pub-sub%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC">2 Pub/Sub에 대하여</a></h3><p><a href="https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern">Pub/Sub</a>,
+또는 발행-구독은 정보를 보낸이(이하 '발행자')으로부터
+특정되지 않은 받는이(이하 '구독자')의 추상 클래스로
+정보를 보내는 메시지 큐 패러다임을 말합니다. 액션케이블은
+이러한 접근법으로 서버와 여러 클라이언트 간의 통신을 구현합니다.</p><h3 id="서버측-컴포넌트"><a class="anchorlink" href="#%EC%84%9C%EB%B2%84%EC%B8%A1-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8">3 서버측 컴포넌트</a></h3><h4 id="서버측-컴포넌트-커넥션"><a class="anchorlink" href="#%EC%84%9C%EB%B2%84%EC%B8%A1-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%BB%A4%EB%84%A5%EC%85%98">3.1 커넥션</a></h4><p><em>커넥션(Connections)</em> 은 클라이언트와 서버 간의 관계의 기반이 됩니다.
+서버에서 웹소켓이 요청을 받을 때마다 커넥션 객체가 생성됩니다.
+이 객체는 앞으로 생성되는 모든 <em>채널 구독</em>의 부모가 됩니다.
+이 커넥션 자체는 인증이나 권한 이외의 어떠한 특정 애플리케이션
+로직도 다루지 않습니다. 웹소켓의 커넥션 클라이언트는 커넥션
+<em>소비자</em>라고도 불립니다. 사용자 개인이 여는 브라우저 탭, 윈도우,
+기기마다 소비자-커넥션 쌍을 하나씩 생성하게 됩니다.</p><p>커넥션은 <code>ApplicationCable::Connection</code>의 객체 입니다.
+이 클래스에서는 들어온 커넥션 요청을 승인하고 인증된 사용자인 경우에
+커넥션을 성립시킵니다.</p><h5 id="커넥션-설정"><a class="anchorlink" href="#%EC%BB%A4%EB%84%A5%EC%85%98-%EC%84%A4%EC%A0%95">3.1.1 커넥션 설정</a></h5><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# app/channels/application_cable/connection.rb
+module ApplicationCable
+  class Connection &lt; ActionCable::Connection::Base
+    identified_by :current_user
+
+    def connect
+      self.current_user = find_verified_user
+    end
+
+    private
+      def find_verified_user
+        if verified_user = User.find_by(id: cookies.encrypted[:user_id])
+          verified_user
+        else
+          reject_unauthorized_connection
+        end
+      end
+  end
+end
+
+</pre>
+</div>
+<p><code>identified_by</code>는 커넥션 ID입니다. 이는 나중에 특정 커넥션을
+탐색하는 경우에도 사용될 수 있습니다. ID로 선언된 정보는 그 커넥션
+이외에도 생성된 모든 채널 인스턴스에 같은 이름이 자동으로 위임됩니다.</p><p>예제는 이미 애플리케이션의 다른 곳 어딘가에서 사용자의 인증을
+다루고 있으며, 그것이 성공적으로 인증 되면 사용자 ID 로서 쿠키를
+내려주고 있다는 사실이 전제되어 있습니다.</p><p>이 쿠키는 새로운 커넥션이 시도되었을 때 자동적으로 커넥션 인스턴스로
+전송되고, 이를 통해 <code>current_user</code>를 설정하게 됩니다. 현재
+사용자와 같은 커넥션이라고 확인되면 그 사용자가 열어둔 모든 커넥션을
+가지게 되며, 사용자가 삭제되었거나 인증이 불가능한 경우에는 잠정적으로
+커넥션을 종료시킬 수도 있습니다.</p><h4 id="채널"><a class="anchorlink" href="#%EC%B1%84%EB%84%90">3.2 채널</a></h4><p><em>채널(channel)</em>은 일반적인 MVC에서 컨트롤러가 하는 일과 마찬가지로, 작업을 논리적인
+단위로 캡슐화합니다. 레일스는 캡슐화하여 채널 간에 공유되는 로직을 위해
+기본적으로 <code>ApplicationCable::Channel</code>이라는 부모 클래스를 생성합니다.</p><h5 id="부모-채널-설정"><a class="anchorlink" href="#%EB%B6%80%EB%AA%A8-%EC%B1%84%EB%84%90-%EC%84%A4%EC%A0%95">3.2.1 부모 채널 설정</a></h5><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# app/channels/application_cable/channel.rb
+module ApplicationCable
+  class Channel &lt; ActionCable::Channel::Base
+  end
+end
+
+</pre>
+</div>
+<p>이제 여러분이 사용할 Channel 클래스를 정의합니다. 예를 들어,
+<code>ChatChannel</code> 및 <code>AppearanceChannel</code>은 다음과 같이 정의할 수 있겠습니다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# app/channels/chat_channel.rb
+class ChatChannel &lt; ApplicationCable::Channel
+end
+
+# app/channels/appearance_channel.rb
+class AppearanceChannel &lt; ApplicationCable::Channel
+end
+
+</pre>
+</div>
+<p>이로써 소비자는 이러한 채널을 구독할 수 있게 됩니다.</p><h5 id="채널-구독"><a class="anchorlink" href="#%EC%B1%84%EB%84%90-%EA%B5%AC%EB%8F%85">3.2.2 구독</a></h5><p>소비자는 <em>구독자(subscribers)</em>처럼 행동하며 채널을 구독합니다.
+그리고 이러한 소비자의 커넥션을 <em>구독(subscription)</em>이라고 합니다.
+생성된 메시지들은 케이블 소비자가 전송한 ID를 기반으로 채널 구독에 라우팅 됩니다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# app/channels/chat_channel.rb
+class ChatChannel &lt; ApplicationCable::Channel
+  # 소비자가 성공적으로 이 채널의
+  # 구독자가 되었을 때 호출됨.
+  def subscribed
+  end
+end
+
+</pre>
+</div>
+<h3 id="클라이언트측-컴포넌트"><a class="anchorlink" href="#%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%B8%A1-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8">4 클라이언트측 컴포넌트</a></h3><h4 id="클라이언트측-컴포넌트-커넥션"><a class="anchorlink" href="#%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%B8%A1-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EC%BB%A4%EB%84%A5%EC%85%98">4.1 커넥션</a></h4><p>소비자 쪽에서도 커넥션 인스턴스가 필요합니다.
+이 커넥션은 레일스에 의해 기본으로 생성된 자바스크립트 코드를 통해 이뤄집니다:</p><h5 id="소비자-연결하기"><a class="anchorlink" href="#%EC%86%8C%EB%B9%84%EC%9E%90-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0">4.1.1 소비자 연결하기</a></h5><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+// app/assets/javascripts/cable.js
+//= require action_cable
+//= require_self
+//= require_tree ./channels
+
+(function() {
+  this.App || (this.App = {});
+
+  App.cable = ActionCable.createConsumer();
+}).call(this);
+
+</pre>
+</div>
+<p>이로써 서버의 <code>/cable</code>에 대응해 접속하게 될 소비자가
+준비되었습니다. 단, 채널을 적어도 하나 이상 구독하기
+전에는 커넥션이 성립되지 않습니다.</p><h5 id="구독자"><a class="anchorlink" href="#%EA%B5%AC%EB%8F%85%EC%9E%90">4.1.2 구독자</a></h5><p>한 채널에 대해 구독을 생성하는 것으로 소비자는 구독자가 됩니다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+# app/assets/javascripts/cable/subscriptions/chat.coffee
+App.cable.subscriptions.create { channel: "ChatChannel", room: "Best Room" }
+
+# app/assets/javascripts/cable/subscriptions/appearance.coffee
+App.cable.subscriptions.create { channel: "AppearanceChannel" }
+
+</pre>
+</div>
+<p>위와 같이 구독을 생성할 수 있으며, 수신한 데이터에
+응답하는 기능에 대해서는 나중에 설명하겠습니다.</p><p>한 명의 소비자는 특정 채널에 대한 한 명의 구독자로서 몇 번이고 행동할 수 있습니다.
+예를 들어 소비자는 여러 채팅방을 동시에 구독할 수 있습니다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+App.cable.subscriptions.create { channel: "ChatChannel", room: "1st Room" }
+App.cable.subscriptions.create { channel: "ChatChannel", room: "2nd Room" }
+
+</pre>
+</div>
+<h3 id="클라이언트-서버간-상호작용"><a class="anchorlink" href="#%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%9C%EB%B2%84%EA%B0%84-%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9">5 클라이언트-서버간 상호작용</a></h3><h4 id="스트림"><a class="anchorlink" href="#%EC%8A%A4%ED%8A%B8%EB%A6%BC">5.1 스트림</a></h4><p><em>스트림(Streams)</em>은 브로드캐스트나 발행하는 내용을
+구독자에게 라우팅하는 기능을 제공합니다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# app/channels/chat_channel.rb
+class ChatChannel &lt; ApplicationCable::Channel
+  def subscribed
+    stream_from "chat_#{params[:room]}"
+  end
+end
+
+</pre>
+</div>
+<p>어떤 모델에 관련된 스트림을 생성하면, 그 모델과 채널로부터 브로드캐스트가
+생성됩니다. 다음 예제에서는 <code>comments:Z2lkOi8vVGVzdEFwcC9Qb3N0LzE</code>와
+같은 브로드캐스트를 구독합니다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+class CommentsChannel &lt; ApplicationCable::Channel
+  def subscribed
+    post = Post.find(params[:id])
+    stream_for post
+  end
+end
+
+</pre>
+</div>
+<p>이것으로 이 채널에 다음과 같이 브로드캐스트를 할 수 있게 됩니다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+CommentsChannel.broadcast_to(@post, @comment)
+
+</pre>
+</div>
+<h4 id="브로드캐스팅"><a class="anchorlink" href="#%EB%B8%8C%EB%A1%9C%EB%93%9C%EC%BA%90%EC%8A%A4%ED%8C%85">5.2 브로드캐스팅</a></h4><p><em>브로드캐스팅(broadcasting)</em>은 발행자가 채널의 구독자들에게
+어떤 것이든 전송할 수 있는 pub/sub 연결입니다. 각 채널은
+여러 개의 브로드캐스트를 스트리밍할 수 있습니다.</p><p>브로드캐스트는 순수한 온라인 큐이며, 시간에 의존합니다.
+스트리밍(한 채널에 대한 구독)하고 있지 않은 소비자는
+나중에 접속할 경우 브로드캐스트를 얻을 수 없습니다.</p><p>브로드캐스트는 레일스 애플리케이션의 다른 장소에서도 호출할 수 있습니다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+WebNotificationsChannel.broadcast_to(
+  current_user,
+  title: 'New things!',
+  body: 'All the news fit to print'
+)
+
+</pre>
+</div>
+<p><code>WebNotificationsChannel.broadcast_to</code> 호출에서는 사용자마다 다른
+브로드캐스트 이름으로 현재 구독 어댑터(프로덕션 환경에서의 기본값은 <code>redis</code>이며,
+개발 환경과 테스트 환경에서는 <code>async</code>입니다) pubsub 큐에 메시지를 저장합니다.
+ID가 1인 사용자라면 브로드캐스트 이름은 <code>web_notifications:1</code>입니다.</p><p>received 콜백을 호출하면 이 채널은 <code>web_notifications:1</code>이
+수신하는 모든 것을 클라이언트에 직접
+스트리밍하게 됩니다.</p><h4 id="클라이언트-서버간-상호작용-구독"><a class="anchorlink" href="#%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%9C%EB%B2%84%EA%B0%84-%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9-%EA%B5%AC%EB%8F%85">5.3 구독</a></h4><p>채널을 구독한 사용자는 구독자로서 행동합니다. 이 커넥션은
+구독이라 불립니다. 사용자가 전송한 ID에 기반하여
+구독 채널로 들어오는 메시지를 전송합니다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+# app/assets/javascripts/cable/subscriptions/chat.coffee
+# 웹 알림을 보낼 수 있는 권한을 이미 요청했다고 가정
+App.cable.subscriptions.create { channel: "ChatChannel", room: "Best Room" },
+  received: (data) -&gt;
+    @appendLine(data)
+
+  appendLine: (data) -&gt;
+    html = @createLine(data)
+    $("[data-chat-room='Best Room']").append(html)
+
+  createLine: (data) -&gt;
+    """
+    &lt;article class="chat-line"&gt;
+      &lt;span class="speaker"&gt;#{data["sent_by"]}&lt;/span&gt;
+      &lt;span class="body"&gt;#{data["body"]}&lt;/span&gt;
+    &lt;/article&gt;
+    """
+
+</pre>
+</div>
+<h4 id="채널에-매개변수-넘기기"><a class="anchorlink" href="#%EC%B1%84%EB%84%90%EC%97%90-%EB%A7%A4%EA%B0%9C%EB%B3%80%EC%88%98-%EB%84%98%EA%B8%B0%EA%B8%B0">5.4 채널에 매개변수 넘기기</a></h4><p>구독을 생성할 때 클라이언트 측에서 서버 측으로
+매개 변수를 전달할 수 있습니다. 다음의 예제를 보시죠:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# app/channels/chat_channel.rb
+class ChatChannel &lt; ApplicationCable::Channel
+  def subscribed
+    stream_from "chat_#{params[:room]}"
+  end
+end
+
+</pre>
+</div>
+<p><code>subscriptions.create</code>에 첫번째 인자로 넘겨진 객체는
+params 해시이어야 합니다. <code>channel</code> 키워드는 생략할 수 없습니다.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+# app/assets/javascripts/cable/subscriptions/chat.coffee
+App.cable.subscriptions.create { channel: "ChatChannel", room: "Best Room" },
+  received: (data) -&gt;
+    @appendLine(data)
+
+  appendLine: (data) -&gt;
+    html = @createLine(data)
+    $("[data-chat-room='Best Room']").append(html)
+
+  createLine: (data) -&gt;
+    """
+    &lt;article class="chat-line"&gt;
+      &lt;span class="speaker"&gt;#{data["sent_by"]}&lt;/span&gt;
+      &lt;span class="body"&gt;#{data["body"]}&lt;/span&gt;
+    &lt;/article&gt;
+    """
+
+</pre>
+</div>
+<div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# NewCommentJob 과 같은 애플리케이션 어딘가에서
+# 다음 처럼 호출됩니다.
+ActionCable.server.broadcast(
+  "chat_#{room}",
+  sent_by: 'Paul',
+  body: 'This is a cool chat app.'
+)
+
+</pre>
+</div>
+<h4 id="메시지를-재전송하기"><a class="anchorlink" href="#%EB%A9%94%EC%8B%9C%EC%A7%80%EB%A5%BC-%EC%9E%AC%EC%A0%84%EC%86%A1%ED%95%98%EA%B8%B0">5.5 메시지를 재전송하기</a></h4><p>한 클라이언트로부터 받은 메시지를 접속하고 있는 다른
+클라이언트에게 <em>재전송(rebroadcast)</em> 하는 경우도 많습니다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# app/channels/chat_channel.rb
+class ChatChannel &lt; ApplicationCable::Channel
+  def subscribed
+    stream_from "chat_#{params[:room]}"
+  end
+
+  def receive(data)
+    ActionCable.server.broadcast("chat_#{params[:room]}", data)
+  end
+end
+
+</pre>
+</div>
+<div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+# app/assets/javascripts/cable/subscriptions/chat.coffee
+App.chatChannel = App.cable.subscriptions.create { channel: "ChatChannel", room: "Best Room" },
+  received: (data) -&gt;
+    # data =&gt; { sent_by: "Paul", body: "This is a cool chat app." }
+
+App.chatChannel.send({ sent_by: "Paul", body: "This is a cool chat app." })
+
+</pre>
+</div>
+<p>재전송을 하게 되면 접속 중인 모든 클라이언트에게 전송됩니다.
+이는 전송을 요청한 클라이언트 자신도 <em>포함합니다</em>.
+사용하는 매개 변수들은 채널에 구독할 때와 같습니다.</p><h3 id="풀-스택-예제"><a class="anchorlink" href="#%ED%92%80-%EC%8A%A4%ED%83%9D-%EC%98%88%EC%A0%9C">6 풀 스택 예제</a></h3><p>다음의 설정 순서는 두 가지 예시에서 공통적으로 해당됩니다:</p>
+<ol>
+<li>
+<a href="#connection-setup">커넥션 설정</a>.</li>
+<li>
+<a href="#parent-channel-setup">부모 채널 설정</a>.</li>
+<li>
+<a href="#connect-consumer">소비자를 연결</a>.</li>
+</ol>
+<h4 id="예제-1-사용자-접속을-표시하기"><a class="anchorlink" href="#%EC%98%88%EC%A0%9C-1-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%91%EC%86%8D%EC%9D%84-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0">6.1 예제 1: 사용자 접속을 표시하기</a></h4><p>이는 사용자가 온라인인지 아닌지, 사용자가 어떤 페이지를 보고 있는지
+추적하는 간단한 예제입니다. (이는 사용자들이 접속 중일 때에 그 사람
+이름의 옆에 녹색 점을 표시하는 기능 등을 구현할 때에 유용합니다)</p><p>서버 측에 나타낼 채널을 생성하세요:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# app/channels/appearance_channel.rb
+class AppearanceChannel &lt; ApplicationCable::Channel
+  def subscribed
+    current_user.appear
+  end
+
+  def unsubscribed
+    current_user.disappear
+  end
+
+  def appear(data)
+    current_user.appear(on: data['appearing_on'])
+  end
+
+  def away
+    current_user.away
+  end
+end
+
+</pre>
+</div>
+<p>구독이 시작되면 <code>subscribed</code> 콜백이 시작되고, "현재 사용자가 접속중"
+이라고 알려줄 수 있게 됩니다. 이 표시 API를 Redis나 데이터베이스
+등과 연동할 수 있습니다.</p><p>클라이언트 측에 나타낼 채널 구독을 생성하세요:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+# app/assets/javascripts/cable/subscriptions/appearance.coffee
+App.cable.subscriptions.create "AppearanceChannel",
+  # 구독이 가능해지면 호출됨.
+  connected: -&gt;
+    @install()
+    @appear()
+
+  # 웹소켓 연결이 닫히면 호출됨.
+  disconnected: -&gt;
+    @uninstall()
+
+  # 구독이 서버로부터 거부되는 경우 호출됨.
+  rejected: -&gt;
+    @uninstall()
+
+  appear: -&gt;
+    # 서버의 `AppearanceChannel#appear(data)`를 호출.
+    @perform("appear", appearing_on: $("main").data("appearing-on"))
+
+  away: -&gt;
+    # 서버의 `AppearanceChannel#away`를 호출.
+    @perform("away")
+
+
+  buttonSelector = "[data-behavior~=appear_away]"
+
+  install: -&gt;
+    $(document).on "turbolinks:load.appearance", =&gt;
+      @appear()
+
+    $(document).on "click.appearance", buttonSelector, =&gt;
+      @away()
+      false
+
+    $(buttonSelector).show()
+
+  uninstall: -&gt;
+    $(document).off(".appearance")
+    $(buttonSelector).hide()
+
+</pre>
+</div>
+<h6 id="예제-1-사용자-접속을-표시하기-클라이언트-서버간-상호작용"><a class="anchorlink" href="#%EC%98%88%EC%A0%9C-1-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%91%EC%86%8D%EC%9D%84-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8-%EC%84%9C%EB%B2%84%EA%B0%84-%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9">6.1.1 클라이언트-서버간 상호작용</a></h6>
+<ol>
+<li><p><strong>클라이언트</strong>는 <strong>서버</strong>에 <code>App.cable =
+ActionCable.createConsumer("ws://cable.example.com")</code>를 경유하여 연결됩니다.
+<strong>서버</strong>는 이 연결을 <code>current_user</code>로 인식합니다. (위치: <code>cable.js</code>)</p></li>
+<li><p><strong>클라이언트</strong>는 <code>App.cable.subscriptions.create(channel: "AppearanceChannel")</code>
+을 경유하여 채널을 구독합니다. (위치: <code>appearance.coffee</code>)</p></li>
+<li><p><strong>서버</strong>는 표시 채널에 새 구독이 시작된 것을
+인식하고 서버의 <code>subscribed</code> 콜백을 통해 <code>current_user</code>의
+<code>appear</code> 메소드를 호출합니다. (위치: <code>appearance_channel.rb</code>)</p></li>
+<li><p><strong>클라이언트</strong>는 구독이 성립된 것을 인식하고 <code>connected</code>를 호출합니다 (위치:
+<code>appearance.coffee</code>). 이를 통해 @install과 @appear가 호출됩니다. @appear는
+서버의 <code>AppearanceChannel#appear(data)</code>를 통해서 데이터 해시
+<code>{ appearing_on: $("main").data("appearing-on") }</code>를
+넘겨줍니다. 서버의 클래스에 선언되어 있는 (콜백을 제외한) 모든 퍼블릭
+메소드가 자동적으로 노출되기 때문에 가능합니다. 공개된 퍼블릭 메소드는
+perform 메소드를 사용하여 원격 프로시저로서 사용할 수 있습니다.</p></li>
+<li><p><strong>서버</strong>는 <code>current_user</code>로 확인한 커넥션의
+채널에서 appear 액션에 대한 요청을 수신합니다.
+(위치: <code>appearance_channel.rb</code>) 서버는 데이터 해시에서
+<code>:appearing_on</code> 키를 사용하여 값을 꺼내어 <code>current_user.appear</code>에
+넘겨진 <code>:on</code> 키의 값으로 설정합니다.</p></li>
+</ol>
+<h4 id="예제-2-새로운-알림을-수신하기"><a class="anchorlink" href="#%EC%98%88%EC%A0%9C-2-%EC%83%88%EB%A1%9C%EC%9A%B4-%EC%95%8C%EB%A6%BC%EC%9D%84-%EC%88%98%EC%8B%A0%ED%95%98%EA%B8%B0">6.2 예제 2: 새로운 알림을 수신하기</a></h4><p>이 예제에서는 웹소켓을 사용하여 서버로부터 클라이언트의
+기능을 원격으로 실행하는 동작을 다룹니다. 그런데
+웹소켓의 멋진 점은 양방향 통신이라는 것입니다.
+이번에는 서버에서 클라이언트의 액션을 호출해봅시다.</p><p>이 알림 채널은 올바른 스트림에 브로드캐스트를
+할 때 클라이언트에 알림을 표시합니다.</p><p>서버의 알림 채널을 만듭니다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# app/channels/web_notifications_channel.rb
+class WebNotificationsChannel &lt; ApplicationCable::Channel
+  def subscribed
+    stream_for current_user
+  end
+end
+
+</pre>
+</div>
+<p>구독을 위한 클라이언트의 알림 채널을 만듭니다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+# app/assets/javascripts/cable/subscriptions/web_notifications.coffee
+# 클라이언트 쪽으로 알림을 보낼 수 있는 권한을
+# 서버가 이미 가지고 있다고 가정합니다.
+App.cable.subscriptions.create "WebNotificationsChannel",
+  received: (data) -&gt;
+    new Notification data["title"], body: data["body"]
+
+</pre>
+</div>
+<p>알림 채널 인스턴스로 어떤 내용을 브로드캐스트하는 것은
+애플리케이션의 어디에서라도 가능합니다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# 이 코드는 애플리케이션의 어딘가(ex: NewCommentJob)에서 호출됨
+WebNotificationsChannel.broadcast_to(
+  current_user,
+  title: 'New things!',
+  body: 'All the news fit to print'
+)
+
+</pre>
+</div>
+<p><code>WebNotificationsChannel.broadcast_to</code> 호출에서는
+현재 구독 어댑터의 pubsub 큐에 메시지를 추가합니다.
+이 때 사용자마다 서로 다른 브로드캐스트 이름이 사용됩니다.
+ID가 1인 사용자라면 브로드캐스트의 이름은 <code>web_notifications:1</code>입니다.</p><p><code>received</code> 콜백이 호출되면, 이 채널은 <code>web_notifications:1</code>에
+도착한 것을 모두 클라이언트에게 전송합니다. 인자로서 넘겨진 데이터는
+서버의 브로드캐스트 호출의 두번째 인수로 넘겨지는 해시입니다.
+이 해시는 JSON으로 인코딩되어 전송되며, <code>received</code>로 수신할 때
+데이터 인자로부터 복원됩니다.</p><h4 id="더-자세한-예시"><a class="anchorlink" href="#%EB%8D%94-%EC%9E%90%EC%84%B8%ED%95%9C-%EC%98%88%EC%8B%9C">6.3 더 자세한 예시</a></h4><p>레일스 애플리케이션에 액션 케이블을 설정하는 방법과 채널을 추가하는 방법에 대해서는
+<a href="https://github.com/rails/actioncable-examples">rails/actioncable-examples</a>에서 전체 예시를 볼 수 있습니다.</p><h3 id="설정"><a class="anchorlink" href="#%EC%84%A4%EC%A0%95">7 설정</a></h3><p>액션케이블에는 구독 어댑터와 허가된 요청 호스트라는 두 개의 필수 설정이 있습니다.</p><h4 id="구독-어댑터"><a class="anchorlink" href="#%EA%B5%AC%EB%8F%85-%EC%96%B4%EB%8C%91%ED%84%B0">7.1 구독 어댑터</a></h4><p>기본적으로, 액션케이블은 <code>config/cable.yml</code>을 설정 파일로 인식합니다.
+이 파일은 각각의 레일스 환경마다 특정 어댑터를 지정해야고 있어야 합니다.
+어댑터에 관한 추가적인 정보는 <a href="#dependencies">의존성</a> 부분을 참고해주세요.</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+development:
+  adapter: async
+
+test:
+  adapter: async
+
+production:
+  adapter: redis
+  url: redis://10.10.3.153:6381
+  channel_prefix: appname_production
+
+</pre>
+</div>
+<h5 id="어댑터-설정"><a class="anchorlink" href="#%EC%96%B4%EB%8C%91%ED%84%B0-%EC%84%A4%EC%A0%95">7.1.1 어댑터 설정</a></h5><p>아래는 최종사용자가 구독할 때에 사용할 수 있는 어댑터 목록입니다.</p><h6 id="async-어댑터"><a class="anchorlink" href="#async-%EC%96%B4%EB%8C%91%ED%84%B0">7.1.1.1 Async 어댑터</a></h6><p>async 어댑터는 개발/테스트 환경을 위한 것으로, 실제 프로덕션 환경에서는 사용하지 마세요.</p><h6 id="redis-어댑터"><a class="anchorlink" href="#redis-%EC%96%B4%EB%8C%91%ED%84%B0">7.1.1.2 Redis 어댑터</a></h6><p>Redis 어댑터를 사용하려면 Redis 서버를 가리키는 URL을 사용자가 지정해주어야 합니다. 추가적으로, 다수의 애플리케이션이 같은
+Redis 서버를 사용할 때에 채널 이름이 충돌하는 것을 방지하기 위해 <code>channel_prefix</code>가 제공됩니다. 보다 자세한 내용은
+<a href="https://redis.io/topics/pubsub#database-amp-scoping">Redis PubSub documentation</a>을 참고해주세요.</p><h6 id="postgresql-어댑터"><a class="anchorlink" href="#postgresql-%EC%96%B4%EB%8C%91%ED%84%B0">7.1.1.3 PostgreSQL 어댑터</a></h6><p>PostgreSQL 어댑터는 액티브레코드의 커넥션 풀 을 사용합니다.
+따라서 애플리케이션의 <code>config/database.yml</code>에서 데이터베이스를 설정해야 합니다.
+이 부분은 가까운 시일 내에 변경이 있을 수도 있습니다. <a href="https://github.com/rails/rails/issues/27214">#27214</a></p><h4 id="허가된-요청-호스트"><a class="anchorlink" href="#%ED%97%88%EA%B0%80%EB%90%9C-%EC%9A%94%EC%B2%AD-%ED%98%B8%EC%8A%A4%ED%8A%B8">7.2 허가된 요청 호스트</a></h4><p>액션케이블은 지정한 호스트의 요청만 수락합니다.
+이 호스트 목록은 배열의 형태로 서버 설정에 넘깁니다.
+각 호스트는 문자열이나 정규 표현식을 사용할 수 있습니다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+config.action_cable.allowed_request_origins = ['http://rubyonrails.com', %r{http://ruby.*}]
+
+</pre>
+</div>
+<p>모든 요청을 허가하려면 다음을 설정하세요:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+config.action_cable.disable_request_forgery_protection = true
+
+</pre>
+</div>
+<p>개발 환경에서 실행 중일 때, 액션케이블은 기본적으로
+localhost:3000으로부터의 요청을 모두 허가합니다.</p><h4 id="소비자-설정"><a class="anchorlink" href="#%EC%86%8C%EB%B9%84%EC%9E%90-%EC%84%A4%EC%A0%95">7.3 소비자 설정</a></h4><p>URL을 설정하기 위해서, HTML 레이아웃의 HEAD 태그 내에 <code>action_cable_meta_tag</code>을 추가하세요.
+이렇게 하면 URL이나 경로를 보통의 방식처럼 환경 설정 파일에서 <code>config.action_cable.url</code>을
+통해 설정된 것으로 간주하여 사용하게 됩니다.</p><h4 id="기타-설정"><a class="anchorlink" href="#%EA%B8%B0%ED%83%80-%EC%84%A4%EC%A0%95">7.4 기타 설정</a></h4><p>설정을 위한 그 밖의 다른 공통 옵션은 커넥션별 로거에 적용되는 로그 태그 입니다.
+사용자 계정 ID를 사용할 수 있는 경우 사용 예시는 다음과 같습니다.
+사용자 계정 ID를 사용할 수 없다면, 태깅 중에는 "no-account"를 사용하세요:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+config.action_cable.log_tags = [
+  -&gt; request { request.env['user_account_id'] || "no-account" },
+  :action_cable,
+  -&gt; request { request.uuid }
+]
+
+</pre>
+</div>
+<p>설정 옵션의 전체 목록을 보려면,
+<code>ActionCable::Server::Configuration</code> 클래스를 확인하세요.</p><p>또한, 서버는 가지고 있는 worker의 개수와 동일한 수의 데이터베이스 연결을 제공해야 합니다.
+기본 worker의 pool 사이즈는 4 로 설정되어 있기 때문에,
+최소한 같은 수의 사용 가능한 연결을 확보해주어야 합니다.
+이는 <code>config/database.yml</code>의 <code>pool</code> 속성을 통해 변경할 수 있습니다.</p><h3 id="독립-케이블-서버-실행하기"><a class="anchorlink" href="#%EB%8F%85%EB%A6%BD-%EC%BC%80%EC%9D%B4%EB%B8%94-%EC%84%9C%EB%B2%84-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">8 독립 케이블 서버 실행하기</a></h3><h4 id="애플리케이션에서-실행하기"><a class="anchorlink" href="#%EC%95%A0%ED%94%8C%EB%A6%AC%EC%BC%80%EC%9D%B4%EC%85%98%EC%97%90%EC%84%9C-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">8.1 애플리케이션에서 실행하기</a></h4><p>액션케이블은 레일스 애플리케이션과 함께 실행할 수 있습니다.
+예를 들어, <code>/websocket</code>에서 웹소켓 요청을 수신하는 경우에는
+<code>config.action_cable.mount_path</code>로 경로를 지정할 수 있습니다:</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# config/application.rb
+class Application &lt; Rails::Application
+  config.action_cable.mount_path = '/websocket'
+end
+
+</pre>
+</div>
+<p>레이아웃에서 <code>action_cable_meta_tag</code>가 호출되고 있으면, 케이블 서버에 연결하기 위해
+<code>App.cable = ActionCable.createConsumer()</code>를 사용할 수 있습니다.
+<code>createConsumer</code>의 첫 번째 인자를 통해 path를 커스텀하여 지정 할 수 있습니다.
+(예시. <code>App.cable = ActionCable.createConsumer("/websocket")</code> )</p><p>생성한 서버의 모든 인스턴스와 서버가 생성한 모든 워커
+인스턴스에는 액션케이블의 새로운 인스턴스도 포함됩니다.
+커넥션 간의 메시지 동기화는 Redis를 통해서 이루어집니다.</p><h4 id="독립된-서버에서-실행하기"><a class="anchorlink" href="#%EB%8F%85%EB%A6%BD%EB%90%9C-%EC%84%9C%EB%B2%84%EC%97%90%EC%84%9C-%EC%8B%A4%ED%96%89%ED%95%98%EA%B8%B0">8.2 독립된 서버에서 실행하기</a></h4><p>레일스 애플리케이션 서버와 액션케이블 서버를 나눌 수도 있습니다.
+액션케이블 서버는 Rack 애플리케이션입니다만, 독립된
+애플리케이션이기도 합니다. 추천하는 기본 설정은 다음과 같습니다.</p><div class="code_container">
+<pre class="brush: ruby; gutter: false; toolbar: false">
+# cable/config.ru
+require_relative '../config/environment'
+Rails.application.eager_load!
+
+run ActionCable.server
+
+</pre>
+</div>
+<p>이어서, <code>bin/cable</code>의 binstub을 사용하여 서버를 시작합니다:</p><div class="code_container">
+<pre class="brush: plain; gutter: false; toolbar: false">
+#!/bin/bash
+bundle exec puma -p 28080 cable/config.ru
+
+</pre>
+</div>
+<p>위 코드는 28080 포트에서 액션케이블 서버를 실행시킵니다.</p><h4 id="메모"><a class="anchorlink" href="#%EB%A9%94%EB%AA%A8">8.3 메모</a></h4><p>웹소켓 서버로부터 세션에 접근할 수 없습니다만, 쿠키에는 접근할 수 있습니다. 이를 사용해서 인증을 처리할
+수 있습니다. <a href="http://www.rubytutorial.io/actioncable-devise-authentication">이 글</a>에서
+Devise와 함께 사용하는 방법을 확인할 수 있습니다.</p><h3 id="의존성"><a class="anchorlink" href="#%EC%9D%98%EC%A1%B4%EC%84%B1">9 의존성</a></h3><p>액션케이블은 pubsub을 처리하기 위한 구독 어댑터 인터페이스를 제공합니다.
+기본 사항으로 비동기, 인라인, PostgreSQL, Redis
+등의 어댑터가 탑재되어 있습니다. 새 레일스
+애플리케이션의 기본 어댑터는 비동기(<code>async</code>) 어댑터입니다.</p><p>루비 코드 구현체는 <a href="https://github.com/faye/websocket-driver-ruby">websocket-driver</a>,
+<a href="https://github.com/celluloid/nio4r">nio4r</a>, <a href="https://github.com/ruby-concurrency/concurrent-ruby">concurrent-ruby</a>에 기반해 작성되었습니다.</p><h3 id="배포"><a class="anchorlink" href="#%EB%B0%B0%ED%8F%AC">10 배포</a></h3><p>액션케이블은 웹소켓과 스레드의 조합으로 제작되어 있습니다.
+프레임워크 내부의 흐름과 사용자 지정 채널의 동작은 루비의 기본
+스레드를 통해 처리됩니다. 즉 스레드에 안전한 코드를 유지하는
+한, 모든 레일스의 정규 모델을 문제 없이 사용할 수 있습니다.</p><p>액션케이블 서버에는 Rack 소켓을 탈취(hijacking)하는 API가
+구현되어 있습니다. 이를 통해서, 애플리케이션 서버의 멀티 스레드
+사용 여부와 관계없이 내부의 커넥션을 멀티 스레드 패턴으로 관리합니다.</p><p>따라서 액션케이블은 Unicorn, Puma, Passenger 의
+인기 있는 서버와 문제없이 연동될 수 있습니다.</p>
+
+        <h3>피드백</h3>
+        <p>
+          여러분의 참여가 가이드 수준을 높입니다.
+        </p>
+        <p>
+          오자와 탈자 또는 확인할 수 있는 에러를 발견하면 기여해보기를 바랍니다.
+          기여하기 전에, <a href="http://edgeguides.rubyonrails.org/contributing_to_ruby_on_rails.html#contributing-to-the-rails-documentation">문서 기여 방법</a> 부분을 읽기 바랍니다.
+        </p>
+        <p>
+          내용이 부족하거나 최신 글이 아닐 수도 있습니다.
+          마스터 브랜치에 빠진 문서를 넣어주기를 바랍니다. 먼저
+          <a href="http://edgeguides.rubyonrails.org">엣지 가이드</a>에서
+          해당 이슈를 이미 수정하여 마스터 브랜치에 반영하였는지 확인하기 바랍니다.
+          Check the <a href="ruby_on_rails_guides_guidelines.html">루비 온 레일스 가이드 지침</a>에서
+          스타일과 관례를 확인합니다.
+        </p>
+        <p>
+          고쳐야 할 것을 찾았으나 직접 수정할 수 없다면,
+          <a href="https://github.com/rails/rails/issues">이슈로 올리기</a> 바랍니다.
+        </p>
+        <p>그리고 마지막으로, 루비 온 레일스 문서에 대한 어떤 토론이라도
+          <a href="https://groups.google.com/forum/#!forum/rubyonrails-docs">rubyonrails-docs 메일링 리스트</a>에서 환영합니다.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="hide" />
+  <div id="footer">
+    <div class="wrapper">
+      <p>이 저작물은 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ko">크리에이티브 커먼즈 동일조건변경허락 4.0 국제</a> 라이선스를 따릅니다.</p>
+<p>"Rails" 와 "Ruby on Rails" 와 레일스 로고 저작권은 데이비드 하이네마이어 한슨에게 있습니다.</p>
+
+    </div>
+  </div>
+
+  <script type="text/javascript" src="javascripts/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/responsive-tables.js"></script>
+  <script type="text/javascript" src="javascripts/guides.js"></script>
+  <script type="text/javascript" src="javascripts/syntaxhighlighter.js"></script>
+  <script type="text/javascript">
+    syntaxhighlighterConfig = {
+      autoLinks: false,
+    };
+    $(guidesIndex.bind);
+  </script>
+</body>
+</html>
